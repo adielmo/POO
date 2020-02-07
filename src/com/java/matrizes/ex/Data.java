@@ -9,7 +9,13 @@ public class Data {
 		
 		saidaDeDados(mat);
 		
+		fimDePrograma();
+		
+	}
+
+	private static void fimDePrograma() {
 		System.out.println("Fim do Programa!!");
+		
 	}
 
 	private static void saidaDeDados(Integer[][] mat) {

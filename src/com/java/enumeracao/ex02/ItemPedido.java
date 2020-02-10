@@ -49,7 +49,8 @@ public class ItemPedido {
 
 	@Override
 	public String toString() {
-		return "Nome: " + this.produto.getNome() + " Qtd:" + this.qtd + " SubTotal: " + subTotal();
+		return "Nome: " + this.produto.getNome() + ", Qtd:" + this.qtd + 
+				", Valor R$ " + this.preco + ", SubTotal R$ " + String.format("%.2f", subTotal()) +"\n";
 	}
 	
 	

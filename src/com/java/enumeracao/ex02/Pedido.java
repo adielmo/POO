@@ -76,16 +76,24 @@ public class Pedido {
 	public String toString() {
 	StringBuffer sb = new StringBuffer();
 	sb.append("SUMARIO ORDER\n");
-	sb.append("Data Atual " + sdf.format(dataPedido));
+	sb.append("Data Atual: " + sdf.format(dataPedido));
 	sb.append("\nStatus: " + this.orderStatus);
 	sb.append("\nCliente :" + this.getCliente().toString());
 	sb.append("Itens:\n");
 	
-	for (ItemPedido itemPedido : pedidoItens) {
-		sb.append(itemPedido.toString());
+		/*
+		 * for (ItemPedido itemPedido : pedidoItens) {
+		 * 
+		 * sb.append(itemPedido.toString());
+		 * 
+		 * }
+		 */
+	
+	for(int i=0; i < pedidoItens.size(); i++) {
 		
+		sb.append((i + 1)+ "º " +  pedidoItens.get(i).toString());
 	}
-	 sb.append("Total: " + total());
+	 sb.append("Total R$ " + String.format("%.2f", total()));
 	
 	
 	return sb.toString();

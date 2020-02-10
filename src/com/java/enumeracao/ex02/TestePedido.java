@@ -26,8 +26,8 @@ public class TestePedido {
 		System.out.println("Digete seu E-mail:");
 		email = sc.next();
 
-		System.out.println("Digete a data (DD/MM/YYYY):");
-		data = sdf.parse(sc.nextLine());
+		System.out.println("Digete a data (dd/MM/YYYY):");
+		data = sdf.parse(sc.next());
 
 		System.out.println("Entre com Status do Pedido:");
 		status = sc.next();
@@ -38,14 +38,18 @@ public class TestePedido {
 		qtd = sc.nextInt();
 
 		for (int i = 1; i <= qtd; i++) {
-
-			System.out.println("Digete nome do Item");
+			
+             sc.nextLine();
+             
+			System.out.println("Digete o nome do " + i +"º"+" Item:");
 			nome = sc.nextLine();
 
 			System.out.println("Entre com valor da " + nome + " :");
 			valor = sc.nextDouble();
+			System.out.println("Entre com quantidade da " + nome + " :");
+			int item = sc.nextInt();
 
-			ItemPedido itemPedido = new ItemPedido(qtd, valor, new Produto(nome, valor));
+			ItemPedido itemPedido = new ItemPedido(item, valor, new Produto(nome, valor));
 			pedido.adicionarItem(itemPedido);
 
 		}

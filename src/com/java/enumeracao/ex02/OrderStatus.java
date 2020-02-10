@@ -1,5 +1,12 @@
 package com.java.enumeracao.ex02;
 
-public class OrderStatus {
+public enum OrderStatus {
+	
+	REALIZADO,
+	AGUARDANDO_PAGAMENTO,
+	PAGAMENTO_CONFIRMADO,
+	PEDIDO_ENVIADO,
+	PEDIDO_ENTREGUE;
+	
 
 }

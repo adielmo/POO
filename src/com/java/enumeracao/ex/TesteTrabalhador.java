@@ -31,7 +31,7 @@ public class TesteTrabalhador {
 		qtd = sc.nextInt();
 
 		for (int i = 1; i <= qtd; i++) {
-			System.out.println("Digete a data do " + i + "º" + " Contrato (DD/MM/YYYY):");
+			System.out.println("Digete a data do " + i + "º" + " Contrato (DD/MM/YYYY HH:mm:ss):");
 			dataContrato = sdf.parse(sc.next());
 
 			System.out.println("Valor da hora do "+ i + "º" + " Contrato:");

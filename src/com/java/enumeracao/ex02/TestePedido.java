@@ -26,7 +26,7 @@ public class TestePedido {
 		System.out.println("Digete seu E-mail:");
 		email = sc.next();
 
-		System.out.println("Digete a data (dd/MM/YYYY):");
+		System.out.println("Digete a data (dd/MM/yyyy):");
 		data = sdf.parse(sc.next());
 
 		System.out.println("Entre com Status do Pedido:");

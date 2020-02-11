@@ -31,9 +31,6 @@ public class ContaCorrente extends Conta {
 		return false;
 	}
 
-	private void saldoLimete(double valorEmprestimo) {
-			this.limete -= valorEmprestimo;	
-	}
 	
 	@Override
 	public String toString() {
@@ -48,5 +45,9 @@ public class ContaCorrente extends Conta {
 		
 		return sb.toString();
 	}
+	
+	private void saldoLimete(double valorEmprestimo) {
+		this.limete -= valorEmprestimo;	
+}
 
 }

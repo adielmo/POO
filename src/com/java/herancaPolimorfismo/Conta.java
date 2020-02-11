@@ -45,7 +45,7 @@ public class Conta {
 	public boolean saque(double valorDeSaque) {
 
 		if (this.saldo > valorDeSaque) {
-			this.saldo -= valorDeSaque;
+			this.saldo -= valorDeSaque + (0.05 * valorDeSaque);
 			return true;
 
 		}

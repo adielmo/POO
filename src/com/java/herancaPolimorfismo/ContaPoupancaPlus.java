@@ -1,5 +1,5 @@
 package com.java.herancaPolimorfismo;
 
-public class ContaPoupancaPlus extends ContaPoupanca{
+public class ContaPoupancaPlus {
 
 }

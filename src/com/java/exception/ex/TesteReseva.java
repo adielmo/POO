@@ -13,7 +13,7 @@ public class TesteReseva {
 			int numeroQuarto;
 			Date data_entrada, data_saida;
 		
-		System.out.println("Data Atual & Hora: "+sdf.format(dataAtual)+"\n");
+		System.out.println("Data Atual: "+sdf.format(dataAtual)+"\n");
 		
 		try {
 		System.out.println("Entre como número do Quarto:");
@@ -25,13 +25,29 @@ public class TesteReseva {
 		  
 		Resevas resevas = new Resevas(numeroQuarto, data_entrada, data_saida);
 		System.out.println(resevas);  
+		
+			/*
+			 * System.out.println("Entre como número do Quarto:");
+			 * numeroQuarto=sc.nextInt();
+			 */
+		System.out.println("Atualizar Data de Entrada (dd/MM/yyyy):");
+		  data_entrada=sdf.parse(sc.next());
+		System.out.println("Atulizar Data de Saída (dd/MM/yyyy):");
+		  data_saida=sdf.parse(sc.next());
+		  resevas.atualizarCheck(data_entrada, data_saida);
+		  
 		}
 		catch (DataException e) {
 			System.out.println(e.getMessage());
 		}
 		catch (ParseException e) {
+			System.out.println("Error, no formato de Data!!");
+		}
+		catch (Exception e) {
 			System.out.println("Error!!");
 		}
+		
+		//System.out.println(rese);
 		
 	sc.close();	
 	}

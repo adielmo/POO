@@ -6,19 +6,19 @@ import java.util.concurrent.TimeUnit;
 
 public class Resevas {
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+	Date data_atual = new Date();
+	
 	private Integer numeroQuarto;
 	private Date data_entrada;
 	private Date data_saida;
 
 	public Resevas() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Resevas(Integer numeroQuarto, Date data_entrada, Date data_saida) throws DataException {
-		if (!data_saida.after(data_entrada)) {
-			throw new DataException("Data de Saída não pode ser Maior q Data de Entrada!!");
-		}
+	public Resevas(Integer numeroQuarto, Date data_entrada, Date data_saida) throws DataException {		
+	validarDatas(data_entrada, data_saida);
+	
 		this.numeroQuarto = numeroQuarto;
 		this.data_entrada = data_entrada;
 		this.data_saida = data_saida;
@@ -54,18 +54,14 @@ public class Resevas {
 	}
 
 	public void atualizarCheck(Date data_entrada, Date data_saida) throws DataException {
-		Date data_atual = new Date();
+		
 
-		if (data_entrada.before(data_atual) || data_saida.before(data_atual)) {
-			throw new DataException("Data não pode ser Antes da Data atual!!");
-		}
-		if (!data_saida.after(data_entrada)) {
-			throw new DataException("Data de Saída não pode ser Maior q Data de Entrada!!");
-		}
+	validarDatas(data_entrada, data_saida);
 
 		this.data_entrada = data_entrada;
 		this.data_saida = data_saida;
 	}
+
 
 	@Override
 	public String toString() {
@@ -79,5 +75,16 @@ public class Resevas {
 
 		return sb.toString();
 	}
+	
+	private void validarDatas(Date data_entrada, Date data_saida) throws DataException {
+		if (data_entrada.before(data_atual) || data_saida.before(data_atual)) {
+			throw new DataException("Data não pode ser Antes da Data atual!!");
+		}
+		if (!data_saida.after(data_entrada)) {
+			throw new DataException("Data de Saída não pode ser Maior q Data de Entrada!!");
+		}
+	}
 
 }
+
+

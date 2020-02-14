@@ -23,7 +23,7 @@ public class Resevas {
 		this.data_entrada = data_entrada;
 		this.data_saida = data_saida;
 	}
-
+	
 	public Integer getNumeroQuarto() {
 		return numeroQuarto;
 	}
@@ -67,7 +67,7 @@ public class Resevas {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("\n****RESEVAS DE QUARTOS***\n");
+		sb.append("****RESEVAS DE QUARTOS***\n");
 		sb.append("Número do Quarto: " + this.numeroQuarto + "\n");
 		sb.append("Data de Entrada: " + sdf.format(this.data_entrada) + "\n");
 		sb.append("Data de Saída: " + sdf.format(this.data_saida) + "\n");
@@ -77,11 +77,12 @@ public class Resevas {
 	}
 	
 	private void validarDatas(Date data_entrada, Date data_saida) throws DataException {
+		
 		if (data_entrada.before(data_atual) || data_saida.before(data_atual)) {
-			throw new DataException("Data não pode ser Antes da Data atual!!");
+			throw new DataException("Data não pode ser, Inferior da Data atual!!");
 		}
 		if (!data_saida.after(data_entrada)) {
-			throw new DataException("Data de Saída não pode ser Maior q Data de Entrada!!");
+			throw new DataException("Data de Saída não pode ser Inferior, Data de Entrada!!");
 		}
 	}
 

@@ -34,8 +34,9 @@ public class TesteReseva {
 		  data_entrada=sdf.parse(sc.next());
 		System.out.println("Atulizar Data de Saída (dd/MM/yyyy):");
 		  data_saida=sdf.parse(sc.next());
-		  resevas.atualizarCheck(data_entrada, data_saida);
 		  
+		  resevas.atualizarCheck(data_entrada, data_saida);
+		  System.out.println(resevas);
 		}
 		catch (DataException e) {
 			System.out.println(e.getMessage());
@@ -47,7 +48,7 @@ public class TesteReseva {
 			System.out.println("Error!!");
 		}
 		
-		//System.out.println(rese);
+		
 		
 	sc.close();	
 	}

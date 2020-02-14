@@ -67,11 +67,11 @@ public class Resevas {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("****RESEVAS DE QUARTOS***\n");
+		sb.append("\n****RESEVAS DE QUARTOS***\n");
 		sb.append("Número do Quarto: " + this.numeroQuarto + "\n");
 		sb.append("Data de Entrada: " + sdf.format(this.data_entrada) + "\n");
 		sb.append("Data de Saída: " + sdf.format(this.data_saida) + "\n");
-		sb.append("Qtd de noite Resevada: " + this.quantidadeNoitesResevadas());
+		sb.append("Qtd de noite Resevada: " + this.quantidadeNoitesResevadas()+"\n");
 
 		return sb.toString();
 	}

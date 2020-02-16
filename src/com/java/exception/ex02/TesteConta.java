@@ -23,6 +23,7 @@ public class TesteConta {
 			System.out.println("5 - Consultar todas as Contas:");
 			System.out.println("6 - Todas as Contas Por Agencia:");
 			System.out.println("7 - Valor total Todas Contas:");
+			System.out.println("8 - Exlcuir uma Conta:");
 			System.out.println("0 - Sair:");
 
 			try {
@@ -61,7 +62,11 @@ public class TesteConta {
 					break;
 				case 7:
 
-					totalDeTodasContas( contas);
+					totalDeTodasContas(contas);
+					break;
+				case 8:
+
+					removerConta(sc, contas);
 					break;
 				case 0:
 					flag = sair(sc);
@@ -80,27 +85,62 @@ public class TesteConta {
 		}
 	}
 
-	private static void totalDeTodasContas(List<Conta> contas) {
-		int count=0;
-		double total =0;
-		
+	private static void removerConta(Scanner sc, List<Conta> contas) {
+		int agencia, numero;
+
 		try {
-		existemContas(contas);
-		
-		for (int i = 0; i < contas.size(); i++) {
-			total += contas.get(i).getSaldo();
-			count ++;
-		}
-		System.out.println("*** Banco Tabajara ***");
-		System.out.println("Valor Todas as Contas: " + total);
-		System.out.println("Quantidade de Contas: " + count);
-		System.out.println("Valor médio por Conta: " + (total + count));
-		
-		}catch (AgenciaOuContaExisteException e) {
+			System.out.println("Entre com Número da Agencia:");
+			agencia = sc.nextInt();
+
+			System.out.println("Entre com Número da Conta:");
+			numero = sc.nextInt();
+
+			excluirAgenciaConta(agencia, numero, contas);
+
+		} catch (ContaExcluirException e) {
+			System.out.println(e.getMessage());
 			
+		} catch (ContaNaoExisteException e) {
 			System.out.println(e.getMessage());
 		}
-		
+	}
+
+	private static void excluirAgenciaConta(int agencia, int numero, List<Conta> contas)
+			throws ContaNaoExisteException, ContaExcluirException {
+
+		validarAgenciaContaExistente(contas, agencia, numero);
+
+		int posicao = buscarPosicaoAgenciaConta(contas, agencia, numero);
+
+		if (contas.get(posicao).getSaldo() > 0) {
+
+			throw new ContaExcluirException("Conta não pode ser excluida, só com Saldo igual a 0!");
+		}
+		contas.remove(posicao);
+
+	}
+
+	private static void totalDeTodasContas(List<Conta> contas) {
+		int count = 0;
+		double total = 0;
+
+		try {
+			existemContas(contas);
+
+			for (int i = 0; i < contas.size(); i++) {
+				total += contas.get(i).getSaldo();
+				count++;
+			}
+			System.out.println("*** Banco Tabajara ***");
+			System.out.println("Valor Todas as Contas: " + total);
+			System.out.println("Quantidade de Contas: " + count);
+			System.out.println("Valor médio por Conta: " + String.format("%.2f", (total / count)));
+
+		} catch (AgenciaOuContaExisteException e) {
+
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	private static void buscarContasPorAgencia(Scanner sc, List<Conta> contas) {
@@ -120,7 +160,7 @@ public class TesteConta {
 	private static void imprimirTodasContasDeUmaAgencia(List<Conta> contas, int agencia)
 			throws AgenciaOuContaExisteException {
 		int count = 0;
-		double soma=0;
+		double soma = 0;
 
 		validarUmaAgencia(contas, agencia);
 
@@ -129,17 +169,16 @@ public class TesteConta {
 			if (contas.get(i).getAgencia() == agencia) {
 
 				System.out.println(contas.get(i).toString());
-				
-				soma +=contas.get(i).getSaldo();				
+
+				soma += contas.get(i).getSaldo();
 				count++;
 
 			}
 
 		}
 		System.out.println("Agencia :" + agencia);
-		System.out.println("Qtd de Contas: "+ soma + "\n");
-		System.out.println("Valor total R$ : "+ count + "\n");
-		
+		System.out.println("Qtd de Contas: " + soma + "\n");
+		System.out.println("Valor total R$ : " + count + "\n");
 
 	}
 
@@ -164,14 +203,14 @@ public class TesteConta {
 	private static void buscarTodasContas(List<Conta> contas) {
 		try {
 			existemContas(contas);
-			
+
 			for (int i = 0; i < contas.size(); i++) {
-			System.out.println((i + 1) + "º" + contas.get(i));
-			
+				System.out.println((i + 1) + "º" + contas.get(i));
+
 			}
-			
-		}catch (AgenciaOuContaExisteException e) {
-			
+
+		} catch (AgenciaOuContaExisteException e) {
+
 			System.out.println(e.getMessage());
 		}
 	}
@@ -358,9 +397,9 @@ public class TesteConta {
 		}
 		return -1;
 	}
-	
-    private static void existemContas(List<Conta> contas)throws AgenciaOuContaExisteException {
-		
+
+	private static void existemContas(List<Conta> contas) throws AgenciaOuContaExisteException {
+
 		if (contas.size() < 1) {
 			throw new AgenciaOuContaExisteException("Nenhuma Conta Cadastrada!");
 		}
@@ -387,9 +426,5 @@ public class TesteConta {
 		} while (flag);
 		return flag;
 	}
-	
-	
+
 }
-
-
-

@@ -75,6 +75,8 @@ public class Conta {
 		this.saldo -= valorSaque;
 		
 	}
+	
+	//public void 
 
 	@Override
 	public String toString() {
@@ -91,7 +93,7 @@ public class Conta {
 	}
 	
 	private void validarSaque(double valorSaque) throws SaqueException {
-		if (!(valorSaque < this.saldo)) {
+		if (!(valorSaque <= this.saldo)) {
 			throw new SaqueException("Valor do Saque é maior que o Saldo Disponivél");
 		}
 

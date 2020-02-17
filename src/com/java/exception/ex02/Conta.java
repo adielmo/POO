@@ -91,7 +91,7 @@ public abstract class Conta {
 		
 	}
 	
-	//public void 
+	public abstract double calcularSaldoLiquido();
 
 	@Override
 	public String toString() {

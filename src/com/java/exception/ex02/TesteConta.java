@@ -131,11 +131,11 @@ public class TesteConta {
 			existemContas(contas);
 
 			for (int i = 0; i < contas.size(); i++) {
-				total += contas.get(i).getSaldo();
+				total += contas.get(i).calcularSaldoLiquido();
 				count++;
 			}
 			System.out.println("*** Banco Tabajara ***");
-			System.out.println("Valor Todas as Contas: " + total);
+			System.out.println("Valor Todas as Contas: " + String.format("%.2f", total));
 			System.out.println("Quantidade de Contas: " + count);
 			System.out.println("Valor médio por Conta: " + String.format("%.2f", (total / count)));
 
@@ -163,7 +163,7 @@ public class TesteConta {
 	private static void imprimirTodasContasDeUmaAgencia(List<Conta> contas, int agencia)
 			throws AgenciaOuContaExisteException {
 		int count = 0;
-		double soma = 0;
+		double total = 0;
 
 		validarUmaAgencia(contas, agencia);
 
@@ -173,14 +173,14 @@ public class TesteConta {
 
 				System.out.println(contas.get(i).toString());
 
-				soma += contas.get(i).getSaldo();
+				total += contas.get(i).calcularSaldoLiquido();
 				count++;
 
 			}
 
 		}
 		System.out.println("Agencia :" + agencia);
-		System.out.println("Qtd de Contas: " + soma + "\n");
+		System.out.println("Qtd de Contas: " + String.format("%.2f", total));
 		System.out.println("Valor total R$ : " + count + "\n");
 
 	}

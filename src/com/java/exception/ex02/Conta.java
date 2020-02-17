@@ -1,30 +1,37 @@
 package com.java.exception.ex02;
 
-public class Conta {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public abstract class Conta {
+	protected static  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	private Integer numero;
 	private Integer agencia;
 	private String nome;
-	private Double saldo = 0.0;
-	private Double limeteSaque = 0.0;
+	protected Date dataCadastro;
+	protected Double saldo = 0.0;
+	protected Double limeteSaque = 0.0;
 
 	public Conta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Conta(Integer numero, Integer agencia, String nome, Double saldo, Double limeteSaque) {
+	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double saldo, Double limeteSaque) {
 
 		this.numero = numero;
 		this.agencia = agencia;
 		this.nome = nome;
+		this.dataCadastro = dataCadastro;
 		this.saldo = saldo;
 		this.limeteSaque = limeteSaque;
 	}
 
-	public Conta(Integer numero, Integer agencia, String nome, Double limeteSaque) {
+	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double limeteSaque) {
 
 		this.numero = numero;
 		this.agencia = agencia;
+		this.dataCadastro = dataCadastro;
 		this.nome = nome;
 		this.limeteSaque = limeteSaque;
 	}
@@ -64,6 +71,14 @@ public class Conta {
 	public Integer getAgencia() {
 		return this.agencia;
 	}
+	
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 
 	public void depositar(double valorDeposito) {
 
@@ -82,10 +97,11 @@ public class Conta {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("*** CONTA BANCARIA ***\n");
-
+        
+		sb.append("Data de Cadastro: " + sdf.format(this.dataCadastro) + "\n");
 		sb.append("Agencia: " + this.agencia + "\n");
 		sb.append("Número Conta: " + this.numero + "\n");		
-		sb.append("Nome:a " + this.nome + "\n");
+		sb.append("Nome: " + this.nome + "\n");
 		sb.append("Saldo: " + this.saldo + "\n");
 		sb.append("Limete p/Saque: " + this.limeteSaque + "\n");
 

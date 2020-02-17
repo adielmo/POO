@@ -1,6 +1,7 @@
 package com.java.exception.ex02;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,10 +12,12 @@ public class TesteConta {
 		String entrada;
 		int opcao = 1;
 		List<Conta> contas = new ArrayList<>();
+		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date data_atual = new Date();
 
+	
 		while (!flag) {
 			System.out.println("***********************//***********************");
-			// System.out.println("Data Atual: " + sdf.format(dataAtual) + "\n");
 			System.out.println("*** Digete a opção desejada: ***");
 			System.out.println("1 - Cadastrar uma Conta:");
 			System.out.println("2 - Depositar:");
@@ -33,7 +36,7 @@ public class TesteConta {
 
 				switch (opcao) {
 				case 1:
-					flag = entradaDadosConta(sc, contas);
+					flag = entradaDadosConta(sc, contas, data_atual);
 
 					break;
 
@@ -99,7 +102,7 @@ public class TesteConta {
 
 		} catch (ContaExcluirException e) {
 			System.out.println(e.getMessage());
-			
+
 		} catch (ContaNaoExisteException e) {
 			System.out.println(e.getMessage());
 		}
@@ -312,11 +315,11 @@ public class TesteConta {
 		}
 	}
 
-	private static boolean entradaDadosConta(Scanner sc, List<Conta> contas) {
+	private static boolean entradaDadosConta(Scanner sc, List<Conta> contas, Date data_atual) {
 		boolean flag = false;
 		;
 		double valorDeposito;
-		char letra;
+		char tipoConta, desejaDepositar;
 		int numero = 0, agencia = 0;
 		do {
 			try {
@@ -344,22 +347,54 @@ public class TesteConta {
 		do {
 			flag = false;
 			System.out.println("Deseja fazer um Deposito (s-n):");
-			letra = sc.next().charAt(0);
+			desejaDepositar = sc.next().charAt(0);
 
-			if (letra == 's') {
-				System.out.println("Entre com o valor R$:");
-				valorDeposito = sc.nextDouble();
-
-				contas.add(new Conta(numero, agencia, nome, valorDeposito, limeteSaque));
-			} else if (letra == 'n') {
-
-				contas.add(new Conta(numero, agencia, nome, limeteSaque));
-			} else {
-				flag = true;
-			}
+			flag = (desejaDepositar != 's' && desejaDepositar != 'n') ? true : false;
 
 		} while (flag);
 
+		do {
+			flag = false;
+			System.out.println("Qual tipo de Conta (p - c):");
+			tipoConta = sc.next().charAt(0);
+
+			flag = (tipoConta != 'p' && tipoConta != 'c') ? true : false;
+
+		} while (flag);
+
+		if (desejaDepositar == 's' && tipoConta == 'p') {
+			System.out.println("Valor do Depósito R$:");
+			valorDeposito = sc.nextDouble();
+
+			System.out.println("Entre com o valor Percetual de Juros %:");
+			double taxaJuros = sc.nextDouble();
+
+			contas.add(new ContaPoupanca(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaJuros));
+
+		} else if (desejaDepositar == 's' && tipoConta == 'c') {
+			System.out.println("Valor do Depósito R$:");
+			valorDeposito = sc.nextDouble();
+
+			System.out.println("Entre da Taxa de Manutenção da Conta Corrente %:");
+			double taxaManutencao = sc.nextDouble();
+
+			contas.add(
+					new ContaCorrente(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaManutencao));
+
+		} else if (desejaDepositar == 'n' && tipoConta == 'p') {
+
+			System.out.println("Entre com o valor Percetual de Juros %:");
+			double taxaJuros = sc.nextDouble();
+
+			contas.add(new ContaPoupanca(numero, agencia, nome, data_atual, limeteSaque, taxaJuros));
+
+		} else if (desejaDepositar == 'n' && tipoConta == 'c') {
+			System.out.println("Entre da Taxa de Manutenção da Conta Corrente %:");
+			double taxaManutencao = sc.nextDouble();
+
+			contas.add(new ContaCorrente(numero, agencia, nome, data_atual, limeteSaque, taxaManutencao));
+
+		}
 		return flag;
 	}
 

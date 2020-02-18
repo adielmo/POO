@@ -11,14 +11,14 @@ public final class ContaPoupanca extends Conta {
 	}
 
 	public ContaPoupanca(Integer numero, Integer agencia, String nome, Date dataCadastro, Double saldo,
-			Double limeteSaque, Double taxaJuros) {
-		super(numero, agencia, nome, dataCadastro, saldo, limeteSaque);
+			Double limeteSaque, Double taxaJuros, TipoConta tipoConta) {
+		super(numero, agencia, nome, dataCadastro, saldo, limeteSaque, tipoConta);
 		this.taxaJuros = taxaJuros;
 	}
 
 	public ContaPoupanca(Integer numero, Integer agencia, String nome, Date dataCadastro, Double limeteSaque,
-			Double taxaJuros) {
-		super(numero, agencia, nome, dataCadastro, limeteSaque);
+			Double taxaJuros, TipoConta tipoConta) {
+		super(numero, agencia, nome, dataCadastro, limeteSaque, tipoConta);
 		this.taxaJuros = taxaJuros;
 	}
 
@@ -44,7 +44,7 @@ public final class ContaPoupanca extends Conta {
 		sb.append("Agencia: " + getAgencia() + "\n");
 		sb.append("Número Conta: " + getNumero() + "\n");
 		sb.append("Nome:a " + getNome() + "\n");
-		sb.append("Saldo R$: " + this.saldo + "\n");
+		sb.append("Saldo R$: " + String.format("%.2f", this.saldo )+ "\n");
 		sb.append("Limete p/Saque: " + this.limeteSaque + "\n");
 		sb.append("Taxa de Juros: " + this.taxaJuros + "%\n");
 		sb.append("Saldo C/Juros R$: " + String.format("%.2f", calcularSaldoLiquido()) + "\n");

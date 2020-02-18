@@ -12,12 +12,13 @@ public abstract class Conta {
 	protected Date dataCadastro;
 	protected Double saldo = 0.0;
 	protected Double limeteSaque = 0.0;
+	private TipoConta tipoConta;
 
 	public Conta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double saldo, Double limeteSaque) {
+	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double saldo, Double limeteSaque, TipoConta tipoConta) {
 
 		this.numero = numero;
 		this.agencia = agencia;
@@ -25,15 +26,17 @@ public abstract class Conta {
 		this.dataCadastro = dataCadastro;
 		this.saldo = saldo;
 		this.limeteSaque = limeteSaque;
+		this.tipoConta = tipoConta;
 	}
 
-	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double limeteSaque) {
+	public Conta(Integer numero, Integer agencia, String nome, Date dataCadastro, Double limeteSaque, TipoConta tipoConta) {
 
 		this.numero = numero;
 		this.agencia = agencia;
 		this.dataCadastro = dataCadastro;
 		this.nome = nome;
 		this.limeteSaque = limeteSaque;
+		this.tipoConta = tipoConta;
 	}
 
 	public Integer getNumero() {
@@ -78,6 +81,10 @@ public abstract class Conta {
 
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+	
+	public TipoConta getTipoConta() {
+		return this.tipoConta;
 	}
 
 	public void depositar(double valorDeposito) {

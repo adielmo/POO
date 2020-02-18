@@ -11,15 +11,15 @@ public final class ContaCorrente extends Conta {
 	}
 
 	public ContaCorrente(Integer numero, Integer agencia, String nome, Date dataCadastro, Double saldo,
-			Double limeteSaque, Double taxaManutencao) {
-		super(numero, agencia, nome, dataCadastro, saldo, limeteSaque);
+			Double limeteSaque, Double taxaManutencao, TipoConta tipoConta) {
+		super(numero, agencia, nome, dataCadastro, saldo, limeteSaque, tipoConta);
 
 		this.taxaManutencao = taxaManutencao;
 	}
 
 	public ContaCorrente(Integer numero, Integer agencia, String nome, Date dataCadastro, Double limeteSaque,
-			Double taxaManutencao) {
-		super(numero, agencia, nome, dataCadastro, limeteSaque);
+			Double taxaManutencao, TipoConta tipoConta) {
+		super(numero, agencia, nome, dataCadastro, limeteSaque, tipoConta);
 
 		this.taxaManutencao = taxaManutencao;
 	}
@@ -43,7 +43,7 @@ public final class ContaCorrente extends Conta {
 		sb.append("Agencia: " + getAgencia() + "\n");
 		sb.append("Número Conta: " + getNumero() + "\n");
 		sb.append("Nome:a " + getNome() + "\n");
-		sb.append("Saldo R$: " + this.saldo + "\n");
+		sb.append("Saldo R$: " + String.format("%.2f", this.saldo) + "\n");
 		sb.append("Limete p/Saque: " + this.limeteSaque + "\n");
 		sb.append("Taxa de Manutenção: " + this.taxaManutencao + "%\n");
 		sb.append("Saldo c/Taxa Manut R$: " + String.format("%.2f", calcularSaldoLiquido())+ "\n");

@@ -11,11 +11,9 @@ public class TesteConta {
 		boolean flag = false;
 		String entrada;
 		int opcao = 1;
-		List<Conta> contas = new ArrayList<>();
-		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		List<Conta> contas = new ArrayList<>();		
 		Date data_atual = new Date();
 
-	
 		while (!flag) {
 			System.out.println("***********************//***********************");
 			System.out.println("*** Digete a opção desejada: ***");
@@ -26,7 +24,8 @@ public class TesteConta {
 			System.out.println("5 - Consultar todas as Contas:");
 			System.out.println("6 - Todas as Contas Por Agencia:");
 			System.out.println("7 - Valor total Todas Contas:");
-			System.out.println("8 - Exlcuir uma Conta:");
+			System.out.println("8 - Consultar por Tipo de Conta:");
+			System.out.println("9 - Exlcuir uma Conta:");
 			System.out.println("0 - Sair:");
 
 			try {
@@ -68,8 +67,12 @@ public class TesteConta {
 					totalDeTodasContas(contas);
 					break;
 				case 8:
+					buscarPorTipoConta(sc, contas);
 
+					break;
+				case 9:
 					removerConta(sc, contas);
+
 					break;
 				case 0:
 					flag = sair(sc);
@@ -86,6 +89,65 @@ public class TesteConta {
 			}
 
 		}
+	}
+
+	private static void buscarPorTipoConta(Scanner sc, List<Conta> contas) {
+		boolean flag = false;
+		String opcao;
+		try {
+			do {
+				flag = false;
+
+				existemContas(contas);
+				System.out.println("Qual Tipo de conta Poupança/Corrente (p - c):");
+				char desejaDepositar = sc.next().charAt(0);
+
+				flag = (desejaDepositar != 'p' && desejaDepositar != 'c') ? false : true;
+				opcao = (desejaDepositar == 'p') ? "Poupança" : "Corrente";
+
+				imprimirPorTipoConta(flag, contas, sc, opcao);
+
+			} while (!flag);
+
+		} catch (AgenciaOuContaExisteException e) {
+
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	private static void imprimirPorTipoConta(boolean flag, List<Conta> contas, Scanner sc, String opcao) {
+		double total = 0;
+		int count = 0;
+
+		if (flag) {
+			for (int i = 0; i < contas.size(); i++) {
+
+				if (contas.get(i).getTipoConta().getNome().equalsIgnoreCase(opcao)) {
+
+					System.out.println(contas.get(i).toString());
+
+					total += contas.get(i).calcularSaldoLiquido();
+					count++;
+
+				} else if (contas.get(i).getTipoConta().getNome().equals(opcao)) {
+
+					System.out.println(contas.get(i).toString());
+
+					total += contas.get(i).calcularSaldoLiquido();
+					count++;
+
+				}
+
+			}
+			if (count > 0) {
+				System.out.println("Valor total da Contas R$: " + String.format("%.2f", total));
+				System.out.println("Qtd de Contas: " + count);
+
+			}
+
+		}
+
 	}
 
 	private static void removerConta(Scanner sc, List<Conta> contas) {
@@ -369,7 +431,8 @@ public class TesteConta {
 			System.out.println("Entre com o valor Percetual de Juros %:");
 			double taxaJuros = sc.nextDouble();
 
-			contas.add(new ContaPoupanca(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaJuros));
+			contas.add(new ContaPoupanca(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaJuros,
+					TipoConta.POUPANCA));
 
 		} else if (desejaDepositar == 's' && tipoConta == 'c') {
 			System.out.println("Valor do Depósito R$:");
@@ -378,21 +441,23 @@ public class TesteConta {
 			System.out.println("Entre da Taxa de Manutenção da Conta Corrente %:");
 			double taxaManutencao = sc.nextDouble();
 
-			contas.add(
-					new ContaCorrente(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaManutencao));
+			contas.add(new ContaCorrente(numero, agencia, nome, data_atual, valorDeposito, limeteSaque, taxaManutencao,
+					TipoConta.CORRENTE));
 
 		} else if (desejaDepositar == 'n' && tipoConta == 'p') {
 
 			System.out.println("Entre com o valor Percetual de Juros %:");
 			double taxaJuros = sc.nextDouble();
 
-			contas.add(new ContaPoupanca(numero, agencia, nome, data_atual, limeteSaque, taxaJuros));
+			contas.add(
+					new ContaPoupanca(numero, agencia, nome, data_atual, limeteSaque, taxaJuros, TipoConta.POUPANCA));
 
 		} else if (desejaDepositar == 'n' && tipoConta == 'c') {
 			System.out.println("Entre da Taxa de Manutenção da Conta Corrente %:");
 			double taxaManutencao = sc.nextDouble();
 
-			contas.add(new ContaCorrente(numero, agencia, nome, data_atual, limeteSaque, taxaManutencao));
+			contas.add(new ContaCorrente(numero, agencia, nome, data_atual, limeteSaque, taxaManutencao,
+					TipoConta.CORRENTE));
 
 		}
 		return flag;

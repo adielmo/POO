@@ -1,4 +1,4 @@
-package com.java.exception.ex;
+package com.java.exceptionData.ex;
 
 public class NumeroQuartoException extends Exception{
 

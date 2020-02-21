@@ -1,28 +1,26 @@
 package com.java.intefaces;
 
-import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Servicos {
 
 	private CalcularContratos calcularContratos;
-	// calcularContratos.
 
 	public Servicos(CalcularContratos calcularContratos) {
 		this.calcularContratos = calcularContratos;
 	}
 
 	public void processarContrato(Contrato contrato, int qtdParcelas) {
-		double parcela = contrato.getValorTotal() / qtdParcelas;
+		double valorParcela = contrato.getValorTotal() / qtdParcelas;
 
 		for (int i = 0; i < qtdParcelas; i++) {
-			Date data = AddMes(contrato.getDataContrato(), i);
+			Date dataParcelas = AddMes(contrato.getDataContrato(), i);
 			
-			double atualizarAliquota = parcela + calcularContratos.pagamento(parcela, i);
+			double atualizarAliquota = valorParcela + calcularContratos.pagamento(valorParcela, i);
 			double atual = atualizarAliquota + calcularContratos.taxaPagamento(atualizarAliquota);
 			
-			contrato.adicionarPrestacao(new Prestacao(data, atual));
+			contrato.adicionarPrestacao(new Prestacao(dataParcelas, atual));
 
 		}
 

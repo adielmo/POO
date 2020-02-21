@@ -31,7 +31,7 @@ public class TesteContrato {
 
 		servicos.processarContrato(contrato, qtdParcelas);
 
-		System.out.println("Installments:");
+		System.out.println("Parcelas:");
 
 		for (Prestacao x : contrato.getPrestacoes()) {
 			System.out.println(x);

@@ -33,7 +33,7 @@ public class Funcionario implements Comparable<Funcionario> {
 	@Override
 	public int compareTo(Funcionario outro) {
 
-		return - this.salario.compareTo(outro.getSalario());
+		return - this.nome.compareTo(outro.getNome());
 	}
 	/*
 	 * @Override public int compareTo(Funcionario outro) {

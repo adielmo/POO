@@ -14,21 +14,29 @@ public class TesteContrato {
 		double valorContrato;
 
 		System.out.println("Número do Contrato:");
-		 numContrato = sc.nextInt();
+		numContrato = sc.nextInt();
 
 		System.out.println("Data do Contrato:");
-		 dataContrato = sdf.parse(sc.next());
-		 
-		 System.out.println("Valor de Contrato R$:");
-		  valorContrato = sc.nextDouble();
-		  
-		  System.out.println("Qtd de Parcelas:");
-		  qtdParcelas = sc.nextInt();
-		 
-Contrato contrato = new Contrato(numContrato, dataContrato, valorContrato, new Prestacao(qtdParcelas));
+		dataContrato = sdf.parse(sc.next());
 
-ServiceContratos serviceContratos = new ServiceContratos();
-System.out.println(serviceContratos.calcularTaxaPorPagamento());
+		System.out.println("Valor de Contrato R$:");
+		valorContrato = sc.nextDouble();
+
+		Contrato contrato = new Contrato(numContrato, dataContrato, valorContrato);
+
+		System.out.println("Qtd de Parcelas:");
+		qtdParcelas = sc.nextInt();
+
+		Servicos servicos = new Servicos(new ServiceContratos());
+
+		servicos.processarContrato(contrato, qtdParcelas);
+
+		System.out.println("Installments:");
+
+		for (Prestacao x : contrato.getPrestacoes()) {
+			System.out.println(x);
+
+		}
 	}
 
 }

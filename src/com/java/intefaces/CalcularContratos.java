@@ -1,11 +1,9 @@
 package com.java.intefaces;
 
-import java.util.Date;
-
 public interface CalcularContratos {
-	
-	void calcularQtdParcelaDeContrato();
-	
-	double calcularTaxaPorPagamento();
+
+	double taxaPagamento(double valor);
+
+	double pagamento(double valor, int mes);
 
 }

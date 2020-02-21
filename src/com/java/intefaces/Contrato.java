@@ -1,26 +1,29 @@
 package com.java.intefaces;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Contrato{
+public class Contrato {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 	private Integer numero;
 	private Date dataContrato;
 	private Double valorTotal;
-	
-	private Prestacao prestacao;
-	
+
+	private List<Prestacao> prestacoes = new ArrayList<>();
+
 	public Contrato() {
-		
+
 	}
 
-	public Contrato(Integer numero, Date dataContrato, Double valorTotal, Prestacao prestacao) {
-		
+	public Contrato(Integer numero, Date dataContrato, Double valorTotal) {
+
 		this.numero = numero;
 		this.dataContrato = dataContrato;
 		this.valorTotal = valorTotal;
-		this.prestacao = prestacao;
+
 	}
 
 	public Integer getNumero() {
@@ -46,29 +49,17 @@ public class Contrato{
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
-	public Prestacao getPrestacao() {
-		return this.prestacao;
+	
+	public List<Prestacao> getPrestacoes() {
+		return prestacoes;
 	}
 
-	public void setPrestacao(Prestacao prestacao) {
-		this.prestacao = prestacao;
+	public void adicionarPrestacao(Prestacao prestacao) {
+		prestacoes.add(prestacao);
 	}
 
-	@Override
-	public String toString() {
-	StringBuilder sb = new StringBuilder();
-	
-	sb.append("Número Contrato: " + this.numero);
-	sb.append("Data Contrato: " + sdf.format(this.dataContrato));
-	sb.append("Número Contrato: " + this.numero);
-	sb.append("Qtd de Parcelas: " + this.prestacao.getQtdParcelas());
-	
-	return sb.toString();
+	public void removerPrestacao(Prestacao prestacao) {
+		prestacoes.remove(prestacao);
 	}
-
-	
-	
-		
 
 }

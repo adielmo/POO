@@ -1,45 +1,55 @@
 package com.java.intefaces;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Prestacao {
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private Date dataVencimento;
-	private Integer qtdParcelas;
+	private Double valorPorParcela;
 	
 	public Prestacao() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Prestacao(Date dataVencimento, Integer qtdParcelas) {
+	public Prestacao(Date dataVencimento, Double valorPorParcela) {
 		
 		this.dataVencimento = dataVencimento;
-		this.qtdParcelas = qtdParcelas;
+		this.valorPorParcela = valorPorParcela;
 	}
 	
-	public Prestacao(Integer qtdParcelas) {		
+	public Prestacao(Double qtdParcelas) {		
 		
-		this.qtdParcelas = qtdParcelas;
+		this.valorPorParcela = qtdParcelas;
 	}
 
 
 	public Date getDataVencimento() {
-		return dataVencimento;
+		return this.dataVencimento;
 	}
 
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public Integer getQtdParcelas() {
-		return qtdParcelas;
+	public Double getValorPorParcela() {
+		return this.valorPorParcela;
 	}
 
-	public void setQtdParcelas(Integer qtdParcelas) {
-		this.qtdParcelas = qtdParcelas;
+	public void setValorPorParcela(Double valorPorParcela) {
+		this.valorPorParcela = valorPorParcela;
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(sdf.format(this.dataVencimento) + " ");
+		sb.append(String.format("%.2f", this.valorPorParcela));
+		
+		return sb.toString();
+	}
 	
 	
 	

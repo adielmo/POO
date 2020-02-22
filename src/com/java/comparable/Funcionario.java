@@ -30,6 +30,7 @@ public class Funcionario implements Comparable<Funcionario> {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
+	
 	@Override
 	public int compareTo(Funcionario outro) {
 

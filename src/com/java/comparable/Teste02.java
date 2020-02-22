@@ -24,6 +24,7 @@ try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			}
 
 			Collections.sort(listFuncionarios);
+			
 			for (Funcionario func : listFuncionarios) {
 				System.out.println(func);
 			}

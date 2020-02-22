@@ -10,7 +10,7 @@ import java.util.List;
 public class Teste {
 	public static void main(String[] args) {
 		List<String> list = new ArrayList<>();
-		String path = "c:\\temp\\ordenar.txt";
+		String path = "c:\\temp\\listaNomes.txt";
 
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 

@@ -2,9 +2,9 @@ package com.java.comparable.ex02;
 
 public class Funcionario implements Comparable<Funcionario> {
 
-	private Integer cbo;
+	private Long cbo;
 	private String cargo;
-	private Integer cargaHoraria;
+	private Long cargaHoraria;
 	private Double pisoSalarial;
 	private Double mediaSalarial;
 	private Double salarioMediana;
@@ -15,9 +15,9 @@ public class Funcionario implements Comparable<Funcionario> {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Funcionario(Integer cbo, String cargo, Integer cargaHoraria, Double pisoSalarial, Double mediaSalarial,
+	public Funcionario(Long cbo, String cargo, Long cargaHoraria, Double pisoSalarial, Double mediaSalarial,
 			Double salarioMediana, Double tetoSalarial, Double salarioHora) {
-		super();
+	
 		this.cbo = cbo;
 		this.cargo = cargo;
 		this.cargaHoraria = cargaHoraria;
@@ -28,11 +28,11 @@ public class Funcionario implements Comparable<Funcionario> {
 		this.salarioHora = salarioHora;
 	}
 
-	public Integer getCbo() {
+	public Long getCbo() {
 		return cbo;
 	}
 
-	public void setCbo(Integer cbo) {
+	public void setCbo(Long cbo) {
 		this.cbo = cbo;
 	}
 
@@ -44,11 +44,11 @@ public class Funcionario implements Comparable<Funcionario> {
 		this.cargo = cargo;
 	}
 
-	public Integer getCargaHoraria() {
+	public Long getCargaHoraria() {
 		return cargaHoraria;
 	}
 
-	public void setCargaHoraria(Integer cargaHoraria) {
+	public void setCargaHoraria(Long cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 
@@ -91,18 +91,27 @@ public class Funcionario implements Comparable<Funcionario> {
 	public void setSalarioHora(Double salarioHora) {
 		this.salarioHora = salarioHora;
 	}
-	
+
 	@Override
 	public int compareTo(Funcionario outro) {
 
-		return this.cargo.compareTo(outro.cargo);
+		return -this.cargo.compareTo(outro.cargo);
 	}
 
 	@Override
 	public String toString() {
-		return "Cbo=" + cbo + ", cargo=" + cargo + ", cargaHoraria=" + cargaHoraria + ", pisoSalarial=" + pisoSalarial
-				+ ", mediaSalarial=" + mediaSalarial + ", salarioMediana=" + salarioMediana + ", tetoSalarial="
-				+ tetoSalarial + ", salarioHora=" + salarioHora + "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.cbo + " ");
+		sb.append(this.cargo + " ");
+		sb.append(this.cargaHoraria + " ");
+		sb.append(this.pisoSalarial + " ");
+		sb.append(this.mediaSalarial + " ");
+		sb.append(this.salarioMediana + " ");
+		sb.append(this.tetoSalarial + " ");
+		sb.append(this.salarioHora + " ");
+		sb.append("");
+		
+		return sb.toString();
 	}
 
 

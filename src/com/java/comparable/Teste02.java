@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Teste02 {
 	public static void main(String[] args) {
+		
 		List<Funcionario> listFuncionarios = new ArrayList<>();
 		String path = "c:\\temp\\listaFuncionarios.csv";
 

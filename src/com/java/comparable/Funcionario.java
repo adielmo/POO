@@ -10,7 +10,7 @@ public class Funcionario implements Comparable<Funcionario> {
 	}
 
 	public Funcionario(String nome, Double salario) {
-		super();
+		
 		this.nome = nome;
 		this.salario = salario;
 	}

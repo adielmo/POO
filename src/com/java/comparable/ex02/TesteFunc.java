@@ -13,7 +13,7 @@ public class TesteFunc {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
-		
+
 		List<Funcionario> listFuncionario = new ArrayList<>();
 		String path = "c:\\temp\\funcionarios.txt";
 
@@ -31,19 +31,23 @@ public class TesteFunc {
 			}
 			Collections.sort(listFuncionario);
 
-			for (int i=0; i < listFuncionario.size(); i++) {
-				
-				if (i+1 < 10) {
-				System.out.println((i+1)+"º --- " + listFuncionario.get(i));
-					
-				}else if (i+1 < 100) {
-					System.out.println((i+1)+"º -- " + listFuncionario.get(i));	
-				}else {
-					System.out.println((i+1)+"º - " + listFuncionario.get(i));
+			for (int i = 0; i < listFuncionario.size(); i++) {
+
+				if (i + 1 < 10) {
+					System.out.println((i + 1) + "º --- " + listFuncionario.get(i));
+
+				} else if (i + 1 < 100) {
+					System.out.println((i + 1) + "º -- " + listFuncionario.get(i));
+				} else {
+					System.out.println((i + 1) + "º - " + listFuncionario.get(i));
 				}
 			}
 
 		} catch (IOException e) {
+			System.out.println(e.getMessage());
+
+		} catch (NumberFormatException e) {
+
 			System.out.println(e.getMessage());
 		}
 

@@ -7,7 +7,7 @@ public class Produto{
 	private Integer qtd;
 	
 	public Produto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Produto(String nome, Double preco, Integer qtd) {

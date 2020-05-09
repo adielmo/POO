@@ -2,8 +2,6 @@ package com.java.programacaoFuncional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ComparadorTeste {
 	public static void main(String[] args) {
@@ -42,13 +40,30 @@ public class ComparadorTeste {
 		// a1.getNome().toUpperCase().compareTo(a2.getNome().toUpperCase()));
 		// .sorted((a1, a2) -> a1.getNome().toUpperCase().compareTo(a2.getNome().toUpperCase()))
 		
-		double total = list.stream()				
-				.filter(x1 -> x1.getNome().toUpperCase().charAt(0) == 'A')
-				.mapToDouble(Produto :: getPreco)
-		        .reduce((a, b) -> a + b).orElse(0);
+		/*
+		 * double total = list.stream() .filter(x1 ->
+		 * x1.getNome().toUpperCase().charAt(0) == 'K') .mapToDouble(Produto ::
+		 * getPreco) .reduce((a, b) -> a + b).orElse(0);
+		 */
+		long total = list.stream()				
+				.filter(x1 -> x1.getNome().toUpperCase().charAt(0) == 'R')
+				.count();
+				//.mapToDouble(Produto :: getPreco)
+		        //.reduce((a, b) -> a + b).orElse(0);		
+		
 
 	System.out.println(total);
-	list.forEach(System.out::println);
+	
+	
+for(Produto item : list) {
+	System.out.println(item);
+}
+
+	//list.forEach(System.out::println);
+	
+		/*
+		 * for(int i=0; i < list.size(); i++) { System.out.println(list.get(i)); }
+		 */
 
 		// System.out.println(String.format("%.2f\n", tt));
 

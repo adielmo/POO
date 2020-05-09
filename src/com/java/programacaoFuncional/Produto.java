@@ -11,7 +11,7 @@ public class Produto{
 	}
 
 	public Produto(String nome, Double preco, Integer qtd) {
-		super();
+		
 		this.nome = nome;
 		this.preco = preco;
 		this.qtd = qtd;

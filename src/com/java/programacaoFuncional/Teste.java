@@ -3,6 +3,7 @@ package com.java.programacaoFuncional;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Teste {
 	
@@ -18,6 +19,9 @@ public class Teste {
 		list.add(new Produto(6L, "Home Theater", 1652.09, 2));
 		list.add(new Produto(7L, "Caixa Bob", 1439.34, 1));
 		list.add(new Produto(8L, "Aspiradó", 761.83, 3));
+		list.add(new Produto(9L, "cama", 365.98, 2));
+		list.add(new Produto(10L, "armario", 1239.02, 1));
+		list.add(new Produto(11L, "mini System", 546.87, 5));
 		
 		
 		
@@ -26,9 +30,16 @@ public class Teste {
 		/*
 		 * for (Produto produto : list) { System.out.println(produto); }
 		 */
-		list.stream()
-		    .sorted(Comparator.comparing(Produto::getNome))
-		    .forEach(System.out::println);
+		
+		//list.sort((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()));
+		 // list.sort(Comparator.comparing(Produto::getNome));
+list.stream().sorted((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()))
+                            // .map(a -> a.getNome().substring(0).toUpperCase())
+                              .map(a -> a.getNome().replaceFirst(regex, replacement))
+		                     .forEach(System.out::println);
+		
+		System.out.println();
+		list.forEach(System.out::println);
 	}
 
 }

@@ -26,10 +26,12 @@ try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
 			Collections.sort(listFuncionarios);
 			
-			for (Funcionario func : listFuncionarios) {
+			listFuncionarios.stream().forEach(System.out::println);
+			
+		/*	for (Funcionario func : listFuncionarios) {
 				System.out.println(func);
 			}
-
+*/
 		} catch (IOException e) {
 			System.out.println("Error! " + e.getMessage());
 		}

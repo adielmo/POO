@@ -9,14 +9,14 @@ public class Teste {
 		
 		List<Produto> list = new ArrayList<Produto>();
 		
-		list.add(new Produto("Geladeira", 128.78, 3));
-		list.add(new Produto("TV", 652.09, 2));
-		list.add(new Produto("Fogão", 439.34, 1));
-		list.add(new Produto("Sofá", 324.87, 4));
-		list.add(new Produto("Micro_Ondas", 348.01, 1));
-		list.add(new Produto("Home Theater", 1652.09, 2));
-		list.add(new Produto("Caixa Bob", 1439.34, 1));
-		list.add(new Produto("Aspiradó", 761.83, 3));
+		list.add(new Produto(1L , "Geladeira", 128.78, 3));
+		list.add(new Produto(2L, "TV", 652.09, 2));
+		list.add(new Produto(3L, "Fogão", 439.34, 1));
+		list.add(new Produto(4L, "Sofá", 324.87, 4));
+		list.add(new Produto(5L, "Micro_Ondas", 348.01, 1));
+		list.add(new Produto(6L, "Home Theater", 1652.09, 2));
+		list.add(new Produto(7L, "Caixa Bob", 1439.34, 1));
+		list.add(new Produto(8L, "Aspiradó", 761.83, 3));
 		
 		
 		

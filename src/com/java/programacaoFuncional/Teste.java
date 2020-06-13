@@ -1,6 +1,7 @@
 package com.java.programacaoFuncional;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Teste {
@@ -25,8 +26,9 @@ public class Teste {
 		/*
 		 * for (Produto produto : list) { System.out.println(produto); }
 		 */
-		list.sort((p1, p2) -> p1.getQtd().compareTo(p2.getQtd()));
-		list.forEach(System.out::println);
+		list.stream()
+		    .sorted(Comparator.comparing(Produto::getNome))
+		    .forEach(System.out::println);
 	}
 
 }

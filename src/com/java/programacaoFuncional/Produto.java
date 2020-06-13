@@ -2,6 +2,7 @@ package com.java.programacaoFuncional;
 
 public class Produto{
 	
+	private Long id;
 	private String nome;
 	private Double preco;
 	private Integer qtd;
@@ -10,11 +11,20 @@ public class Produto{
 		
 	}
 
-	public Produto(String nome, Double preco, Integer qtd) {
+	public Produto(Long id, String nome, Double preco, Integer qtd) {
 		
 		this.nome = nome;
 		this.preco = preco;
 		this.qtd = qtd;
+		this.id = id;
+	}
+	
+	public Long getId() {
+		return this.id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -43,7 +53,7 @@ public class Produto{
 
 	@Override
 	public String toString() {
-		return "Nome: " + nome + ", Preco: " + preco + ", Qtd: " + qtd;
+		return "Código:" + this.id +" Nome:" + this.nome + ", Preco:" + this.preco + ", Qtd: " + this.qtd;
 	}
 
 

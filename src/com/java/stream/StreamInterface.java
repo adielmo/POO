@@ -14,7 +14,7 @@ public class StreamInterface {
 
 		Stream.generate(() -> new Random()
 			  .nextInt(100))
-		      .limit(2)
+		      .limit(1)
 		      //.distinct()
 		      .forEach(System.out::println);
 		

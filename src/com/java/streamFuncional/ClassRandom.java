@@ -11,49 +11,37 @@ import java.util.stream.Stream;
 public class ClassRandom {
 
 	public static void main(String[] args) {
-		
-	List<BigDecimal> listaNumeros = new ArrayList<>();	
-	List<Integer> numerosRandom= Stream.generate(() -> new Random()
-			  .nextInt(101))
-	          .filter(a -> a.intValue() > 0)	
-	          .distinct()	
-		      .limit(51)
-		      .collect(Collectors.toList());
-	
-numerosRandom.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);	
 
-numerosRandom.stream()
-            // .map(Integer::doubleValue)              
-             //.filter(a -> a % 2 != 0)
-             .map(BigDecimal::new)
-             
-           .forEach(b -> listaNumeros.add(b));
+		List<BigDecimal> listaNumeros = new ArrayList<>();
+		List<Integer> numerosRandom = Stream.generate(() -> new Random().nextInt(101)).filter(a -> a.intValue() > 0)
+				.distinct().limit(51).collect(Collectors.toList());
 
-numerosRandom.stream().forEach(a -> System.out.print(a + " "));
-System.out.println("\nLista números Random: " + numerosRandom.stream().count());
+		numerosRandom.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);
 
-System.out.println("\nLista de números: " + listaNumeros.stream().count());
+		numerosRandom.stream()
+				// .map(Integer::doubleValue)
+				// .filter(a -> a % 2 != 0)
+				.map(BigDecimal::new)
+
+				.forEach(b -> listaNumeros.add(b));
+
+		numerosRandom.stream().forEach(a -> System.out.print(a + " "));
+		System.out.println("\nLista números Random: " + numerosRandom.stream().count());
+
+		System.out.println("\nLista de números: " + listaNumeros.stream().count());
 //Collections.shuffle(listaNumeros);
-listaNumeros.stream().forEach(a -> System.out.print(a + " "));
-             
+		listaNumeros.stream().forEach(a -> System.out.print(a + " "));
 
+		/*
+		 * numerosRandom.stream().forEach(a -> listaNumeros.add(a));
+		 * listaNumeros.forEach(System.out::println);
+		 */
 
-	/*
-	 * numerosRandom.stream().forEach(a -> listaNumeros.add(a));
-	 * listaNumeros.forEach(System.out::println);
-	 */
+		/*
+		 * for (int i = 0; i < numerosRandom.size(); i++) { listaNumeros.add(i,
+		 * numrosRandom.get(i)); } listaNumeros.stream().forEach(a ->
+		 * System.out.println(a));
+		 */
 
-/*
-  for (int i = 0; i < numerosRandom.size(); i++) {  
-  listaNumeros.add(i, numrosRandom.get(i));  
-  }  
-  listaNumeros.stream().forEach(a -> System.out.println(a)); */
- 
-	
-
-	
-	
-		      
-		
 	}
 }

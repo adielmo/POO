@@ -1,7 +1,9 @@
 package com.java.stream;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TesteString {
 	
@@ -11,11 +13,20 @@ public class TesteString {
 				                           "a", "S", "d", "F", "g", "H", "J", "K", "l", "ç",
 				                           "Z", "x", "c", "v", "B", "N", "M");
 		
-		letras.stream()
-		      .map(String::toUpperCase)	
-		      .map((a) -> new StringBuilder().append(a).append("-"))
-		      .forEach(System.out::print);
+		
+		
+		  letras.stream() .map(String::toUpperCase) .map((a) -> new
+		  StringBuilder().append(a).append("-")) .forEach(System.out::print);
+		  
+			 
+		
+		
+		  Collections.shuffle(letras); System.out.println(); 
+		  letras.forEach(a ->
+		  System.out.print(a.toUpperCase() + "-"));
+		 
+		 
 		      
+	
 	}
-
 }

@@ -20,6 +20,9 @@ public class TesteReduce {
 		Item item7 = new Item(5L, 5, 59.08, "Teclado");
 
 		List<Item> items = Arrays.asList(item, item2, item3, item4, item5, item6, item7);
+		
+		Collections.shuffle(items);
+		items.forEach(System.out::println);
 
 		// items.stream().forEach(saida -> System.out.println(saida));
 		System.out.println();

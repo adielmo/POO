@@ -33,13 +33,14 @@ public class Teste {
 		
 		//list.sort((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()));
 		 // list.sort(Comparator.comparing(Produto::getNome));
-list.stream().sorted((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()))
-                            // .map(a -> a.getNome().substring(0).toUpperCase())
-                              .map(a -> a.getNome().replaceFirst(regex, replacement))
-		                     .forEach(System.out::println);
 		
+List<String> aa= list.stream().sorted((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()))                            
+              .map(a -> a.getNome().substring(0, 1).toUpperCase().substring(1))             
+		      .collect(Collectors.toList());
+
+	
 		System.out.println();
-		list.forEach(System.out::println);
+		aa.forEach(System.out::println);
 	}
 
 }

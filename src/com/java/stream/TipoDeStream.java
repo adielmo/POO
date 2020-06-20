@@ -50,7 +50,7 @@ public class TipoDeStream {
 		numerosInteger.stream()
 		   .map(BigDecimal::new)
 		   .reduce(BigDecimal::multiply)
-		   .ifPresent((a) -> System.out.println("R$" +df.format(a)));
+		  .ifPresent((a) -> System.out.println("R$" +df.format(a)));
 		
 		System.out.println("\nConverter Long para BigDecimal, calcular");
 		numerosLong.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);

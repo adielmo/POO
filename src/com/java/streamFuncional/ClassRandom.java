@@ -13,8 +13,13 @@ public class ClassRandom {
 	public static void main(String[] args) {
 
 		List<BigDecimal> listaNumeros = new ArrayList<>();
-		List<Integer> numerosRandom = Stream.generate(() -> new Random().nextInt(101)).filter(a -> a.intValue() > 0)
-				.distinct().limit(51).collect(Collectors.toList());
+		
+		List<Integer> numerosRandom = 
+				Stream.generate(() -> new Random().nextInt(101))
+				.filter(a -> a.intValue() > 0)
+				.distinct()
+				.limit(51)
+				.collect(Collectors.toList());
 
 		numerosRandom.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);
 

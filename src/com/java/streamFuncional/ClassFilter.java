@@ -2,9 +2,11 @@ package com.java.streamFuncional;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import com.java.programacaoFuncional.Produto;
+import com.java.stream.Item;
 
 public class ClassFilter {
 	public static void main(String[] args) {
@@ -22,10 +24,24 @@ public class ClassFilter {
 		Produto p10 = new Produto(11L, "Espaguete", 3.75, 62);
 		Produto p11 = new Produto(6L, "Queijo Prato", 27.89, 56);
 		Produto p12 = new Produto(11L, "Picanha Bovina", 49.75, 165);
+		Produto p13 = new Produto(5L, "Pão Frances", 1.99, 17);
 
-		List<Produto> produtos = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+		List<Produto> produtos = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13);
 		
-		produtos.stream().forEach(System.out::println);
+		/*
+		 * produtos.stream() .skip(4) .limit(3) .mapToDouble(Produto::getPreco)
+		 * .reduce(1, (n1, n2)-> n1 * n2);
+		 */	
+			
+			produtos.stream()
+			        .distinct()
+			        .map(Produto::getQtd)
+			        .reduce(Integer::sum)
+			        .ifPresent(System.out::println);
+			//System.out.println(df.format(aa));
+			
+			 
+		
 	}
 
 }

@@ -28,7 +28,7 @@ public abstract class ClasseAbstract {
 		return produtos.stream().sorted(Comparator.comparing(Produto::getNome).reversed()).collect(Collectors.toList());
 	}
 
-	protected static List<Produto> valorApartir(List<Produto> produtos, double valor) {
+	public static List<Produto> valorApartir(List<Produto> produtos, double valor) {
 
 		return produtos.stream()
 				// .map(Produto::getPreco)
@@ -51,12 +51,13 @@ public abstract class ClasseAbstract {
 
 	}
 
-	public static List<Produto> ordenandoPorCodigo(List<Produto> produtos) {
+	 static List<Produto> ordenandoPorCodigo(List<Produto> produtos) {
 		
 		return produtos.stream()
 				       .sorted(Comparator.comparingLong(Produto::getId))
 				       .collect(Collectors.toList());
 	}
+
 	
 	/*
 	 * public static BigDecimal valorPorLetra(List<Produto> produtos, char letra) { 

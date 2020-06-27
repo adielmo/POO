@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.java.programacaoFuncional.Produto;
 
-public class TesteList extends ClasseAbstract{
+public class TesteList {
 	
 	public static void main(String[] args) {
 		DecimalFormat df = new DecimalFormat("##,###.#####");
@@ -39,6 +39,7 @@ public class TesteList extends ClasseAbstract{
     List<Produto> produtoLetra = ClasseAbstract.nomeComLetra(produtos, letra);
     BigDecimal valorPorProduto = ClasseAbstract.valorPorLetra(produtos, letra);
     List<Produto> ordemProCodigo  = ClasseAbstract.ordenandoPorCodigo(produtos);
+    
 	
 	
 	//dd.forEach(System.out::println);

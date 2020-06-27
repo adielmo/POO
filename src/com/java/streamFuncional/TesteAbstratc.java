@@ -9,10 +9,9 @@ import com.java.stream.ClasseAbstract;
 
 public class TesteAbstratc {
 	public static void main(String[] args) {
-		
-		
+
 		DecimalFormat df = new DecimalFormat("##,###.#####");
-		
+
 		Produto p1 = new Produto(3L, "Feijão", 12.57, 12);
 		Produto p2 = new Produto(5L, "Arroz", 15.78, 19);
 		Produto p3 = new Produto(8L, "Acuçar", 2.49, 2);
@@ -25,12 +24,12 @@ public class TesteAbstratc {
 		Produto p10 = new Produto(11L, "Espaguete", 3.75, 62);
 		Produto p11 = new Produto(6L, "Queijo Prato", 27.89, 56);
 		Produto p12 = new Produto(11L, "Picanha Bovina", 49.75, 165);
-		
+
 		List<Produto> produtos = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
 		
-	List<Produto>list=	ClasseAbstract.calcular(produtos);
-	
-	list.forEach(System.out::println);
+		// ClasseAbstract aa = new ClasseAbstract();
+
+		// list.forEach(System.out::println);
 	}
 
 }

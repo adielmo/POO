@@ -2,15 +2,18 @@ package com.java.streamFuncional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.java.stream.ClasseAbstract;
+
 public class ClassRandom {
 
 	public static void main(String[] args) {
+		//ClasseAbstract aa= new ClasseAbstract();
+		
 
 		List<BigDecimal> listaNumeros = new ArrayList<>();
 		

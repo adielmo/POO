@@ -50,7 +50,6 @@ public class TesteFunc {
 
 			System.out.println(e.getMessage());
 		}
-
 	}
 
 }

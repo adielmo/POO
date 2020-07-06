@@ -1,6 +1,8 @@
 package com.java.live;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,13 +53,18 @@ public class TesteFuncionario {
 				"Digete o percental do aumento ao funcionario " + list.get(pos).getNome().toUpperCase() + " :");
 		double percentual = scanner.nextDouble();
 
-		calcularAumento(scanner, percentual, list, pos);
+		// calcularAumento(percentual, list, pos);
+		Funcionario.calcularAumento(percentual, list, pos);
 
-		for (int i = 0; i < list.size(); i++) {
+		list.stream().sorted(Comparator.comparing(Funcionario::getNome)).forEach(System.out::println);
 
-			System.out.println(list.get(i));
-
-		}
+		/*
+		 * for (int i = 0; i < list.size(); i++) {
+		 * 
+		 * System.out.println(list.get(i));
+		 * 
+		 * }
+		 */
 
 	}
 
@@ -78,22 +85,9 @@ public class TesteFuncionario {
 
 	private static int entradaDeDados(int count, List<Funcionario> list, Scanner scanner) {
 		boolean flag = false;
-		Long codigo;
+		Long codigo = 0L;
 
-		do {
-			flag = false;
-			System.out.println("Digete o código do Funcionario " + (count + 1) + " :");
-			codigo = scanner.nextLong();
-
-			for (int i = 0; i < list.size(); i++) {
-
-				if (list.get(i).getId().equals(codigo)) {
-					flag = true;
-					System.out.println("Codigo já existente! \nDigete outro!");
-				}
-			}
-
-		} while (flag);
+		codigo = validarCodigo(count, list, scanner, codigo);
 
 		System.out.println("Digete o Nome:");
 		String nome = scanner.next();
@@ -107,9 +101,44 @@ public class TesteFuncionario {
 		return count;
 	}
 
-	private static void calcularAumento(Scanner scanner, double percentual, List<Funcionario> list, int pos) {
-		double salarioAtual = list.get(pos).getSalario();
+	private static Long validarCodigo(int count, List<Funcionario> list, Scanner scanner, Long codigo) {
+		boolean flag;
+		do {
+			
+			flag = false;
 
-		list.get(pos).setSalario((salarioAtual * (percentual / 100)) + salarioAtual);
+			try {
+				
+				System.out.println("Digete o código do Funcionario " + (count + 1) + " :");
+				codigo = scanner.nextLong();
+
+			} catch (InputMismatchException e) {
+				flag = true;
+				System.out.println("Entrada inválida, " + e.getMessage());
+				scanner.next();
+
+			}
+			
+			
+				for (int i = 0; i < list.size(); i++) {
+
+					if (list.get(i).getId().equals(codigo)) {
+						flag = true;
+						System.out.println("Codigo já existente! \nDigete outro!");
+					}
+				}
+
+		
+
+		} while (flag);
+		return codigo;
 	}
+
+	/*
+	 * private static void calcularAumento( double percentual, List<Funcionario>
+	 * list, int pos) { double salarioAtual = list.get(pos).getSalario();
+	 * 
+	 * list.get(pos).setSalario((salarioAtual * (percentual / 100)) + salarioAtual);
+	 * }
+	 */
 }

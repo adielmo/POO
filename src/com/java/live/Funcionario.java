@@ -1,12 +1,14 @@
 package com.java.live;
 
+import java.util.List;
+
 public class Funcionario {
-	
+
 	private Long id;
-	
+
 	private String nome;
 	private Double salario;
-	
+
 	public Funcionario() {
 		// TODO Auto-generated constructor stub
 	}
@@ -14,7 +16,7 @@ public class Funcionario {
 	public Funcionario(Long id, String nome, Double salario) {
 		super();
 		this.id = id;
-		
+
 		this.nome = nome;
 		this.salario = salario;
 	}
@@ -42,15 +44,16 @@ public class Funcionario {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
-	
 
+	public static void calcularAumento(double percentual, List<Funcionario> list, int pos) {
+		double salarioAtual = list.get(pos).getSalario();
 
+		list.get(pos).setSalario((salarioAtual * (percentual / 100)) + salarioAtual);
+	}
 
 	@Override
 	public String toString() {
-		return "Funcionario [id=" + id + ", nome=" + nome + ", salario="
-				+ salario + "]";
+		return "Funcionario [id=" + id + ", nome=" + nome + ", salario=" + salario + "]";
 	}
-	
 
 }

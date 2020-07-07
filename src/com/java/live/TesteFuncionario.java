@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TesteFuncionario {
 
@@ -15,8 +17,7 @@ public class TesteFuncionario {
 		List<Funcionario> list = new ArrayList<Funcionario>();
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Digete a Qtd de funcionario:");
-		qtdFuncionario = scanner.nextInt();
+		qtdFuncionario = validarNumeros(qtdFuncionario, scanner);
 
 		while (count < qtdFuncionario) {
 			count = entradaDeDados(count, list, scanner);
@@ -53,18 +54,9 @@ public class TesteFuncionario {
 				"Digete o percental do aumento ao funcionario " + list.get(pos).getNome().toUpperCase() + " :");
 		double percentual = scanner.nextDouble();
 
-		// calcularAumento(percentual, list, pos);
 		Funcionario.calcularAumento(percentual, list, pos);
 
 		list.stream().sorted(Comparator.comparing(Funcionario::getNome)).forEach(System.out::println);
-
-		/*
-		 * for (int i = 0; i < list.size(); i++) {
-		 * 
-		 * System.out.println(list.get(i));
-		 * 
-		 * }
-		 */
 
 	}
 
@@ -84,13 +76,11 @@ public class TesteFuncionario {
 	}
 
 	private static int entradaDeDados(int count, List<Funcionario> list, Scanner scanner) {
-		boolean flag = false;
 		Long codigo = 0L;
+		String nome = "";
 
 		codigo = validarCodigo(count, list, scanner, codigo);
-
-		System.out.println("Digete o Nome:");
-		String nome = scanner.next();
+		nome = validarNome(scanner);
 
 		System.out.println("Digete o Salário de " + nome + " :");
 		Double salario = scanner.nextDouble();
@@ -101,44 +91,80 @@ public class TesteFuncionario {
 		return count;
 	}
 
+	private static String validarNome(Scanner scanner) {
+		boolean flag = false;
+		String nome = "";
+		// Pattern pattern = Pattern.compile("[a-zA-Z]+");
+
+		do {
+
+			flag = false;
+
+			System.out.println("Digete o Nome:");
+			nome = scanner.next();
+			// Matcher matcher = pattern.matcher(nome);
+
+			if (!nome.matches("[a-zA-Z]+")) {
+
+				System.out.println("Error\nDigete Somente Letras!\n");
+				flag = true;
+				//scanner.next();
+			}
+
+		} while (flag);
+
+		return nome;
+
+	}
+
 	private static Long validarCodigo(int count, List<Funcionario> list, Scanner scanner, Long codigo) {
 		boolean flag;
 		do {
-			
+
 			flag = false;
 
 			try {
-				
+
 				System.out.println("Digete o código do Funcionario " + (count + 1) + " :");
 				codigo = scanner.nextLong();
 
 			} catch (InputMismatchException e) {
+
+				System.out.println("Entrada inválida!\n");
 				flag = true;
-				System.out.println("Entrada inválida, " + e.getMessage());
 				scanner.next();
 
 			}
-			
-			
-				for (int i = 0; i < list.size(); i++) {
 
-					if (list.get(i).getId().equals(codigo)) {
-						flag = true;
-						System.out.println("Codigo já existente! \nDigete outro!");
-					}
+			for (int i = 0; i < list.size(); i++) {
+
+				if (list.get(i).getId().equals(codigo)) {
+					flag = true;
+					System.out.println("Codigo já existente! \nDigete outro!");
 				}
-
-		
+			}
 
 		} while (flag);
 		return codigo;
 	}
 
-	/*
-	 * private static void calcularAumento( double percentual, List<Funcionario>
-	 * list, int pos) { double salarioAtual = list.get(pos).getSalario();
-	 * 
-	 * list.get(pos).setSalario((salarioAtual * (percentual / 100)) + salarioAtual);
-	 * }
-	 */
+	private static int validarNumeros(int qtdFuncionario, Scanner scanner) {
+		boolean flag = false;
+		do {
+			flag = false;
+			try {
+				System.out.println("Digete a Qtd de funcionario:");
+				qtdFuncionario = scanner.nextInt();
+
+			} catch (InputMismatchException e) {
+				flag = true;
+				System.out.println("Entrada inválida !\n");
+				scanner.next();
+			}
+
+		} while (flag);
+
+		return qtdFuncionario;
+	}
+
 }

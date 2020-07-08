@@ -40,6 +40,9 @@ public class TesteFuncionario {
 
 			System.out.println("Digete o Id válido:");
 			Long codigo = scanner.nextLong();
+			
+//Funcionario fun = list.stream()
+			//.filter(a -> a.getId().equals(codigo)).findFirst().orElse(null);
 
 			pos = BuscarPosicao(scanner, list, codigo);
 
@@ -59,6 +62,7 @@ public class TesteFuncionario {
 		list.stream().sorted(Comparator.comparing(Funcionario::getNome)).forEach(System.out::println);
 
 	}
+	
 
 	private static int BuscarPosicao(Scanner scanner, List<Funcionario> list, Long codigo) {
 

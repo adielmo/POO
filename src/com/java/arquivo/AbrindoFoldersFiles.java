@@ -10,6 +10,7 @@ public class AbrindoFoldersFiles {
 		
 		System.out.println("Enter a folder path: ");
 		System.out.println("Ex: c:\\temp");
+		
 		String strPath = sc.nextLine();
 		
 		File path = new File(strPath);

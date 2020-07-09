@@ -9,19 +9,19 @@ public class Teste {
 	
 	public static void main(String[] args) {
 		
-		List<Produto> list = new ArrayList<Produto>();
+		List<Item> list = new ArrayList<Item>();
 		
-		list.add(new Produto(1L , "Geladeira", 128.78, 3));
-		list.add(new Produto(2L, "TV", 652.09, 2));
-		list.add(new Produto(3L, "Fogão", 439.34, 1));
-		list.add(new Produto(4L, "Sofá", 324.87, 4));
-		list.add(new Produto(5L, "Micro_Ondas", 348.01, 1));
-		list.add(new Produto(6L, "Home Theater", 1652.09, 2));
-		list.add(new Produto(7L, "Caixa Bob", 1439.34, 1));
-		list.add(new Produto(8L, "Aspiradó", 761.83, 3));
-		list.add(new Produto(9L, "cama", 365.98, 2));
-		list.add(new Produto(10L, "armario", 1239.02, 1));
-		list.add(new Produto(11L, "mini System", 546.87, 5));
+		list.add(new Item(1L , "Geladeira", 128.78, 3));
+		list.add(new Item(2L, "TV", 652.09, 2));
+		list.add(new Item(3L, "Fogão", 439.34, 1));
+		list.add(new Item(4L, "Sofá", 324.87, 4));
+		list.add(new Item(5L, "Micro_Ondas", 348.01, 1));
+		list.add(new Item(6L, "Home Theater", 1652.09, 2));
+		list.add(new Item(7L, "Caixa Bob", 1439.34, 1));
+		list.add(new Item(8L, "Aspiradó", 761.83, 3));
+		list.add(new Item(9L, "cama", 365.98, 2));
+		list.add(new Item(10L, "armario", 1239.02, 1));
+		list.add(new Item(11L, "mini System", 546.87, 5));
 		
 		
 		

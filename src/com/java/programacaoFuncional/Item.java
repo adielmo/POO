@@ -1,17 +1,17 @@
 package com.java.programacaoFuncional;
 
-public class Produto{
+public class Item{
 	
 	private Long id;
 	private String nome;
 	private Double preco;
 	private Integer qtd;
 	
-	public Produto() {
+	public Item() {
 		
 	}
 
-	public Produto(Long id, String nome, Double preco, Integer qtd) {
+	public Item(Long id, String nome, Double preco, Integer qtd) {
 		
 		this.nome = nome;
 		this.preco = preco;
@@ -72,7 +72,7 @@ public class Produto{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		Item other = (Item) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

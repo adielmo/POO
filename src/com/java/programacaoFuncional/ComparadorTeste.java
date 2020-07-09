@@ -7,20 +7,20 @@ public class ComparadorTeste {
 
 	public static void main(String[] args) {
 
-		List<Produto> list = new ArrayList<>();
+		List<Item> list = new ArrayList<>();
 
-		Produto p1 = new Produto(1L, "Feijão", 12.57, 12);
-		Produto p2 = new Produto(2L, "Arroz", 15.78, 19);
-		Produto p3 = new Produto(3L, "Acuçar", 2.49, 7);
-		Produto p4 = new Produto(4L, "Café", 11.75, 23);
-		Produto p5 = new Produto(5L, "Cerveja", 4.98, 38);
-		Produto p6 = new Produto(6L, "Refrigerante", 7.89, 41);
-		Produto p7 = new Produto(7L, "Det. Liquido", 1.97, 51);
-		Produto p8 = new Produto(8L, "Sabonete", 2.39, 29);
-		Produto p9 = new Produto(9L, "Desodorante", 15.71, 75);
-		Produto p10 = new Produto(10L, "Espaguete", 3.75, 62);
-		Produto p11 = new Produto(11L, "Queijo Prato", 27.89, 56);
-		Produto p12 = new Produto(12L, "Picanha Bovina", 49.75, 15);
+		Item p1 = new Item(1L, "Feijão", 12.57, 12);
+		Item p2 = new Item(2L, "Arroz", 15.78, 19);
+		Item p3 = new Item(3L, "Acuçar", 2.49, 7);
+		Item p4 = new Item(4L, "Café", 11.75, 23);
+		Item p5 = new Item(5L, "Cerveja", 4.98, 38);
+		Item p6 = new Item(6L, "Refrigerante", 7.89, 41);
+		Item p7 = new Item(7L, "Det. Liquido", 1.97, 51);
+		Item p8 = new Item(8L, "Sabonete", 2.39, 29);
+		Item p9 = new Item(9L, "Desodorante", 15.71, 75);
+		Item p10 = new Item(10L, "Espaguete", 3.75, 62);
+		Item p11 = new Item(11L, "Queijo Prato", 27.89, 56);
+		Item p12 = new Item(12L, "Picanha Bovina", 49.75, 15);
 		// List<Produto> list = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
 		// p11, p12);
 
@@ -42,7 +42,7 @@ public class ComparadorTeste {
 		list.stream().sorted((a1, a2) -> a1.getNome().toUpperCase().compareTo(a2.getNome().toUpperCase()));
 
 		double total = list.stream().filter(x1 -> x1.getNome().toLowerCase().charAt(0) == 'c')
-				.mapToDouble(Produto::getPreco).reduce(0, (a, b) -> a + b);
+				.mapToDouble(Item::getPreco).reduce(0, (a, b) -> a + b);
 
 		System.out.println(total);
 	}

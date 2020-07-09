@@ -24,7 +24,8 @@ public class ClassRandom {
 				.limit(51)
 				.collect(Collectors.toList());
 
-		numerosRandom.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);
+		numerosRandom.stream().map(BigDecimal::new)
+		             .reduce(BigDecimal::add).ifPresent(System.out::println);
 
 		numerosRandom.stream()
 				// .map(Integer::doubleValue)

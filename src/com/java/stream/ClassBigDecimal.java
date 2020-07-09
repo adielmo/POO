@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class TipoDeStream {
+public class ClassBigDecimal {
 	public static void main(String[] args) {
 		DecimalFormat df = new DecimalFormat("#,###.#####");
 
@@ -39,17 +39,24 @@ public class TipoDeStream {
 
 		System.out.println("\nConverter Double para BigDecimal, e soma");
 
-		Optional<BigDecimal> valorBig = numerosDouble.stream().map(BigDecimal::new).reduce((a, b) -> a.multiply(b));
+		Optional<BigDecimal> valorBig = numerosDouble.stream()
+				.map(BigDecimal::new)
+				.reduce((a, b) -> a.multiply(b));
 		// .ifPresent((a) -> System.out.println("R$"+df.format(a)));
 
 		System.out.println("\nTOTAL: R$ " + df.format(valorBig.get()));
 
 		System.out.println("\nConverter Inteiro para BigDecimal, e soma");
-		numerosInteger.stream().map(BigDecimal::new).reduce(BigDecimal::multiply)
-				.ifPresent((a) -> System.out.println("R$" + df.format(a)));
+		numerosInteger.stream()
+		              .map(BigDecimal::new)
+		              .reduce(BigDecimal::multiply)
+				      .ifPresent((a) -> System.out.println("R$" + df.format(a)));
 
 		System.out.println("\nConverter Long para BigDecimal, calcular");
-		numerosLong.stream().map(BigDecimal::new).reduce(BigDecimal::add).ifPresent(System.out::println);
+		numerosLong.stream()
+		           .map(BigDecimal::new)
+		           .reduce(BigDecimal::add)
+		           .ifPresent(System.out::println);
 
 	}
 

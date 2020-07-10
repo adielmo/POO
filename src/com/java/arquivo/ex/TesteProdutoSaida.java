@@ -21,12 +21,15 @@ public class TesteProdutoSaida {
 
 	public static void main(String[] args) {
 
-		DecimalFormat df = new DecimalFormat("##,###.#####");
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
+		DateFormat d = new SimpleDateFormat("dd-MM-yyyy");
+		// DecimalFormat df = new DecimalFormat("##,###.#####");
+		// DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy@HH-mm-ss");
 		DateFormat dDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
 		Date dataAtual = new Date();
-		String data = dateFormat.format(dataAtual);
+
+		String dd = d.format(dataAtual);
+		// String data = dateFormat.format(dataAtual);
 		String hj = dDate.format(dataAtual);
 		System.out.println(hj);
 
@@ -47,8 +50,8 @@ public class TesteProdutoSaida {
 
 		List<Item> itens = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
 
-		String path = "c:\\temp\\teste" + random.nextInt(10001) + ".txt";
-		//String path = "c:\\temp\\doc" + data + ".txt";
+		String path = "c:\\temp\\teste_" + random.nextInt(10001) + "_" + dd + ".txt";
+		// String path = "c:\\temp\\doc" + data + ".txt";
 
 		List<Item> produtos = itens.stream().sorted((a, b) -> a.getId().compareTo(b.getId()))
 				.collect(Collectors.toList());
@@ -59,14 +62,36 @@ public class TesteProdutoSaida {
 		// listPrecos.stream().map(BigDecimal::new).reduce((a, b) -> a.add(b));
 
 		Optional<BigDecimal> valorTotal = produtos.stream().map(Item::getPreco).map(BigDecimal::new)
-				.reduce(BigDecimal::add);
+				.reduce((a, b) -> a.add(b));
+		// .reduce(BigDecimal::add);
+
 		Optional<Integer> qtdEstoque = produtos.stream().map(Item::getQtd).reduce(Integer::sum);
+		// .reduce(0, (a, b) -> a + b);
+
+		// .filter((nome) -> nome.getNome().charAt(0) == 'M')
+
 		Long qtdItens = produtos.stream().count();
 
+		List<Item> listNomes = produtos.stream().filter((nome) -> nome.getNome().toUpperCase().charAt(0) == 'C')
+				.collect(Collectors.toList());
+		
+		Optional<BigDecimal> valorTotal02 = listNomes.stream()
+							.map(Item::getPreco)
+							.map(BigDecimal::new)
+							.reduce((a, b) -> a.add(b));
+		
+		Optional<Integer> qtdEstoque02 = listNomes.stream()
+				          .map(Item::getQtd)
+				          
+				          .reduce(Integer::sum);
+		Long qtdItens02 = listNomes.stream()
+				          .count();
+
 		// String tt=valorTotal.get().toPlainString();
+		String frase = "\n \n \n Qtd de itens nessa lista por Letra\n \n";
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
-			
+
 			bw.write(String.format("\nData Atual: %s \n \n", hj));
 
 			for (Item item : produtos) {
@@ -78,6 +103,17 @@ public class TesteProdutoSaida {
 			bw.write(String.format("\n \n \nQtd de Itens: %d ", qtdItens));
 			bw.write(String.format("\nEstoque: %d", qtdEstoque.get()));
 			bw.write(String.format("\nValor Total R$ %.2f", valorTotal.get()));
+
+			bw.write(frase.toUpperCase());
+
+			for (Item item : listNomes) {
+				bw.write(item.toString());
+				bw.newLine();
+			}
+
+			bw.write(String.format("\n \n \nQtd de Itens: %d ", qtdItens02));
+			bw.write(String.format("\nEstoque: %d", qtdEstoque02.get()));
+			bw.write(String.format("\nValor Total R$ %.2f", valorTotal02.get()));
 
 		} catch (Exception e) {
 			System.out.println("Error !");

@@ -3,10 +3,12 @@ package com.java.arquivo.ex02;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-public class TesteFuncionario {
+public class LeituraFuncionario {
 	public static void main(String[] args) {
 
 		boolean flag = false;
@@ -48,6 +50,17 @@ do {
 					.mapToDouble(Funcionario::getSalario).reduce(0, (a, b) -> a + b);
 			System.out.println();
 			list.stream().filter(a -> a.getNome().toUpperCase().charAt(0) == letra).forEach(System.out::println);
+			
+			System.out.println(String.format("\nTotal de R$ %.2f\n", total));
+			
+		DoubleSummaryStatistics valoresSalario = list.stream().collect(Collectors.summarizingDouble(Funcionario::getSalario));
+		
+		System.out.println("Total R$ " + valoresSalario.getSum());
+		System.out.println("Média R$ " + String.format("%.2f", valoresSalario.getAverage()));
+		System.out.println("Qtd de Itens: " + valoresSalario.getCount());
+		System.out.println("Menor preço R$ " + valoresSalario.getMin());
+		System.out.println("Maior preço  R$ " + valoresSalario.getMax());
+		
 
 			/*
 			 * list.stream() .sorted((a, b) -> a.getSexo().compareTo(b.getSexo()))
@@ -55,7 +68,7 @@ do {
 			 * .forEach(System.out::println);
 			 */
 
-			System.out.println(String.format("\nTotal de R$ %.2f", total));
+			
 
 		} catch (Exception e) {
 			flag = true;

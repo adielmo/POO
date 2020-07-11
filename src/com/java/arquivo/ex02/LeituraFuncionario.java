@@ -17,7 +17,7 @@ do {
 	flag = false;
 	
 		System.out.println("Entre com o path do file:");
-		System.out.println("c:\\temp\\ex.txt");
+		System.out.println("c:\\temp\\entrada.txt");
 		String path = scanner.nextLine();
 
 		System.out.println("Digete o salário");
@@ -36,18 +36,19 @@ do {
 			while (line != null) {
 				String[] fields = line.split(",");
 
-				list.add(new Funcionario(fields[0], Integer.parseInt(fields[1]), fields[2], fields[3].charAt(0),
+list.add(new Funcionario(fields[0], Integer.parseInt(fields[1]), fields[2], fields[3].charAt(0),
 						Double.parseDouble(fields[4])));
 
 				line = br.readLine();
 			}
 
-			list.stream().sorted((a, b) -> a.getEmail().compareTo(b.getEmail())).filter((a) -> a.getSalario() > salario)
+list.stream().sorted((a, b) -> a.getEmail().compareTo(b.getEmail())).filter((a) -> a.getSalario() > salario)
 					.forEach(System.out::println);
 
-			Double total = list.stream().filter(a -> a.getNome().toUpperCase().charAt(0) == letra)
+Double total = list.stream().filter(a -> a.getNome().toUpperCase().charAt(0) == letra)
 					// .map(Funcionario :: getSalario)
 					.mapToDouble(Funcionario::getSalario).reduce(0, (a, b) -> a + b);
+
 			System.out.println();
 			list.stream().filter(a -> a.getNome().toUpperCase().charAt(0) == letra).forEach(System.out::println);
 			

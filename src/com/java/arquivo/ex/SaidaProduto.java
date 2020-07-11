@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 import com.java.programacaoFuncional.Item;
 
-public class TesteProdutoSaida {
+public class SaidaProduto {
 
 	public static void main(String[] args) {
 

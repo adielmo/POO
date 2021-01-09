@@ -8,6 +8,8 @@ public class AbrindoFoldersFiles {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		//Listar todos os Files dento Folder temp
+		
 		System.out.println("Enter a folder path: ");
 		System.out.println("Ex: c:\\temp");
 		

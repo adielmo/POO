@@ -5,9 +5,29 @@ import java.util.Scanner;
 
 public class CriandoFolder {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter a folder path: ");
+		//Criando um Folder dentro do outros
+		Scanner sc = new Scanner(System.in);
+		System.out.println("C:/FileIO/DemoDirectory");		
+		File folder; 
+		
+		System.out.println("Digete o path para o new Folder:");
+		folder = new File(sc.nextLine());
+		
+		
+		if (!folder.exists()) {
+			folder.mkdirs();
+			System.out.println("successfully");
+		}else {
+			System.out.println("Folder existente!");
+		}
+		
+
+		/*
+		 * boolean isDirectoryCreated = dir.mkdir(); if (isDirectoryCreated) {
+		 * System.out.println("successfully"); } else { System.out.println("not"); }
+		 */		
+		/*System.out.println("Enter a folder path: ");
 		System.out.println("Ex: c:\\temp");
 		String strPath = sc.nextLine();
 		
@@ -15,7 +35,7 @@ public class CriandoFolder {
 		boolean success = new File(strPath + "\\java").mkdir();
 		System.out.println("Directory created successfully: " + success);
 		sc.close();
-		
+	*/	
 	}
 
 }

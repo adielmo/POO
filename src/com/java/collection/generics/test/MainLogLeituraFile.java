@@ -2,6 +2,7 @@ package com.java.collection.generics.test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.java.collection.generics.Log;
+import com.java.collection.generics.TratarException;
 
 public class MainLogLeituraFile {
 
@@ -30,6 +32,7 @@ public class MainLogLeituraFile {
 		String inPath;
 		String nameFile = random.nextInt(101) + "_" + date + ".txt";
 		String outPath = "c:\\temp\\out_"+ nameFile;
+		String aa = "c:\\adielmo\\santos\\out_"+ nameFile;
 
 		System.out.println("c:\\temp\\in.txt");
 		System.out.println("Digete o Path:");
@@ -55,8 +58,11 @@ public class MainLogLeituraFile {
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
+		
+	File salvePath = criarFolder(scanner);
+	
 	//Gerar uma File .txt	
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(outPath))){
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(salvePath))){
 	
 	bw.write(String.format("\nData Atual: %s \n \n", dateHora));
 	bw.write("");
@@ -67,13 +73,24 @@ try (BufferedWriter bw = new BufferedWriter(new FileWriter(outPath))){
 	}
 	
 	bw.write("\n\nTotal de User no File: "  + logs.size());	
-	System.out.println("Arquivo gerado com sucesso !\nFile salve no Folder no Path:\n " + outPath);
+	System.out.println("Arquivo gerado com sucesso !\nFile salve no Folder no Path:\n " + salvePath);
 	
 		} catch (Exception e) {
 
 			System.out.println("Error: " + e.getMessage());
 		} 
 
+	}
+
+	private static File criarFolder(Scanner scanner) {
+		System.out.println("Digete o Path para salve do File\nEx: 'C:\\temp' !");	
+		File salvePath = new File(scanner.nextLine());
+		
+		if (!salvePath.exists()) {
+			salvePath.mkdirs();
+			
+		}
+		return salvePath;
 	}
 
 }

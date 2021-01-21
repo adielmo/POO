@@ -19,7 +19,7 @@ public class CriandoFolder {
 			folder.mkdirs();
 			System.out.println("successfully");
 		}else {
-			System.out.println("Folder existente!");
+			System.out.println("Path: " + folder + "\nJá existente!");
 		}
 		
 

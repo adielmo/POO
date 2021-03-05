@@ -44,7 +44,11 @@ public class TesteReduce {
 
 		System.out.println(total);
 
-		Integer qtdProduto = items.stream().skip(5).mapToInt(Item::getQtd).reduce((p1, p2) -> p1 + p2).orElse(0);
+		Integer qtdProduto = items.stream()
+				.skip(5)
+				.mapToInt(Item::getQtd)
+				.reduce((p1, p2) -> p1 + p2)
+				.orElse(0);
 
 		System.out.println(qtdProduto);
 

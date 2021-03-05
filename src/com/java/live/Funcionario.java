@@ -5,18 +5,14 @@ import java.util.List;
 public class Funcionario {
 
 	private Long id;
-
 	private String nome;
 	private Double salario;
 
-	public Funcionario() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Funcionario(Long id, String nome, Double salario) {
-		super();
+
+
+	public Funcionario(Long id, String nome, Double salario) {		
 		this.id = id;
-
 		this.nome = nome;
 		this.salario = salario;
 	}

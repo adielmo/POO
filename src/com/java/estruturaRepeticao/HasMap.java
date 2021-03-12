@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Teste {
+public class HasMap {
 
 	public static void main(String[] args) {
 

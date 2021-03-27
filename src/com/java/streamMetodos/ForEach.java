@@ -31,6 +31,11 @@ listNomes.stream().map(a -> a.toUpperCase()).forEach(i -> System.out.print(" "+i
 System.out.println("\n\n================================================String Minusculas");
 listNomes.stream().map(String::toLowerCase).sorted((a, b) -> a.compareTo(b)). forEach(i -> System.out.print(" "+i+" "));
 
+System.out.println("\n\n================================================Ordenação por");
+//listNomes.stream().filter(a -> a.charAt(0) =="a") .sorted((a, b) -> a.compareTo(a)).forEach(i -> System.out.print(i + ", "));
+
+listNomes.stream().filter(a -> a.charAt(0) =='a').forEach(i -> System.out.print(i));
+
 
 
 	}

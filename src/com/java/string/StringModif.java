@@ -20,7 +20,7 @@ System.out.println("==============//==============");
 
 
 //replace( "q", "n") --> Substitir os caracter nessa String, o q pelo n
-//replaceAll( "Regex", "") --> Utiliza no primeiro paramentro expressão Regex, pelo qual vai substitui 
+//replaceAll( "Regex", "") --> Utiliza no primeiro paramentro expressão Regex, e substitui pelo segundo 
 String replaci= "e s p a ç o";
 String join= "e s p a ç o";
 System.out.println("IndexOf: "+ join.replace(" ", ""));

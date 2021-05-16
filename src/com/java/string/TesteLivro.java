@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -20,11 +19,7 @@ public class TesteLivro {
 			List<Livro> livros = new ArrayList<>();
 			String linha = bf.readLine();
 
-			while (count <= 5) {
-				linha = bf.readLine();
-				count++;
-
-			}
+			while (count <= 5) {linha = bf.readLine();count++;}
 
 			while (linha != null) {
 				String[] fields = linha.split(";");

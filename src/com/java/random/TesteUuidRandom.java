@@ -16,6 +16,10 @@ public static void main(String[] args) {
 	System.out.println(uuid+"       "+uuid.length());
 	System.out.println("Somente Números: "+numeros + "     "+numeros.length());
 	System.out.println("Somente Letras: "+letras+ "         "+letras.length());
+    System.out.println(uuidRandom.replaceAll("[^-]", ""));
+    System.out.println(uuidRandom.replaceAll("[a-z0-9]", ""));
+    System.out.println(uuidRandom.replaceAll("[^0-5]", ""));
+
 
 }
 

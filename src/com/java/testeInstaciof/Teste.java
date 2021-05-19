@@ -6,6 +6,7 @@ public class Teste {
 		
 		PessoaFisica pf = new PessoaFisica();
 		PessoaJuridica pj = new PessoaJuridica();
+		Clientes clientes = new Clientes();
 		
 		if (pf instanceof Cliente) {
 			System.out.println(true);

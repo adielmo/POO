@@ -7,7 +7,7 @@ public class Teste01 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int qtd, valor, count=0;
-		System.out.println("Qual o tamanho da Matriz Linha:");
+		System.out.println("Qual o tamanho da Matriz,\n a Qtd Linha vai ser igual Qtd de Coluna:");
 		qtd = sc.nextInt();
 
 		Integer[][] matrizes = new Integer[qtd][qtd];
@@ -44,9 +44,24 @@ public class Teste01 {
 			System.out.println(matrizes[i][i]);
 
 		}
+		System.out.println();
+		
+		  for (int i =0, j=matrizes[i].length-1; i < matrizes.length; i++, j--) {		  
+		  
+		  System.out.println(matrizes[i][j]);		  
+		  }
+		  
 		System.out.println("==========================//====================");
 		System.out.println("Qtd número Negativo: " + count);
+		System.out.println("==========================//====================");
 
+		for(int i=0; i < matrizes.length; i++) {
+			
+			for(int j=0; j < matrizes[i].length; j++) {
+				System.out.print(matrizes[i][j] + " ");
+			}
+			System.out.println();
+		}
 
 		sc.close();
 	}

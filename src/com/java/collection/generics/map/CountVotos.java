@@ -23,11 +23,11 @@ do {
 		
 }while(flag);
 
-/*
- * for(String key : votosMap.keySet()) { System.out.println(key+"---"+
- * votosMap.get(key)); }
- */
-votosMap.entrySet().stream().sorted().forEach((key, value) -> System.out::printf)	;
+
+  for(String key : votosMap.keySet()) { System.out.println(key+"---"+
+  votosMap.get(key)); }
+
+votosMap.entrySet().stream().sorted().forEach((key) -> System.out.println("Nome:"+key.getKey() +" Qtd:" +key.getValue()));
 
 
 	}

@@ -1,9 +1,11 @@
-package com.java.programacaoFuncional;
+package com.java.streamSort;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.java.programacaoFuncional.Item;
 
 public class Teste {
 	
@@ -23,7 +25,7 @@ public class Teste {
 		list.add(new Item(10L, "armario", 1239.02, 1));
 		list.add(new Item(11L, "mini System", 546.87, 5));
 		
-		
+		//list.forEach(x -> System.out.println(x));	
 		
 		//list.sort((p1, p2) -> p1.getNome().toUpperCase().compareTo(p2.getNome().toUpperCase()));
 		
@@ -34,13 +36,19 @@ public class Teste {
 		//list.sort((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()));
 		 // list.sort(Comparator.comparing(Produto::getNome));
 		
-List<String> aa= list.stream().sorted((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()))                            
-              .map(a -> a.getNome().substring(0, 1).toUpperCase().substring(1))             
-		      .collect(Collectors.toList());
+//List<String> aa= list.stream().sorted((a, b) -> a.getNome().toUpperCase().compareTo(b.getNome().toUpperCase()))                            
+             // .map(a -> a.getNome().substring(0, 1).toUpperCase().substring(1))             
+		     // .collect(Collectors.toList());
 
-	
-		System.out.println();
-		aa.forEach(System.out::println);
+
+		//System.out.println();
+		//aa.forEach(System.out::println);
+		
+		System.out.println("-----------------------//------------------");
+	 List<Item> prod= list.stream().sorted(Comparator.comparing(Item::getId).reversed())
+			 .collect(Collectors.toList());
+	 prod.forEach(x -> System.out.println(x));
+				          
 	}
 
 }

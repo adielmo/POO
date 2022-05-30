@@ -27,7 +27,7 @@ do {
  * for(String key : votosMap.keySet()) { System.out.println(key+"---"+
  * votosMap.get(key)); }
  */
-votosMap.entrySet().stream().sorted().forEach((key, value) -> System.out::printf)	;
+//votosMap.entrySet().stream().sorted().forEach((key, value) -> System.out::printf)	;
 
 
 	}

@@ -45,7 +45,7 @@ public class Teste {
 		//aa.forEach(System.out::println);
 		
 		System.out.println("-----------------------//------------------");
-	 List<Item> prod= list.stream().sorted(Comparator.comparing(Item::getId).reversed())
+	 List<Item> prod= list.stream().sorted(Comparator.comparing(Item::getNome).reversed())
 			 .collect(Collectors.toList());
 	 prod.forEach(x -> System.out.println(x));
 				          

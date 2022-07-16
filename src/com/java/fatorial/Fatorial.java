@@ -1,4 +1,4 @@
-package com.java.recursividade;
+package com.java.fatorial;
 
 /**
  * 

@@ -17,7 +17,7 @@ public class StringMatches {
 		String email = "adielmo@gmail.com";
 
 
-		boolean valido = ValidacaoMatches.isValidoMatches(nome);
+		boolean valido = ValidacaoMatches.isPrimeiraLetraMaiuscula(nome);
 		boolean numero = ValidacaoMatches.possuiNumero(name);
 
 		System.out.println("Possui número: " + numero);

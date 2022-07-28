@@ -26,7 +26,7 @@ public abstract class ValidacaoMatches {
 		return nome.matches("\\w\\d");
 	}
 
-	public static boolean isValidoMatches(String nome) {
+	public static boolean isPrimeiraLetraMaiuscula(String nome) {
 		// Validação Primeira Letra Maiuscula
 		return nome.matches("^[A-Z]+(.)*");
 	}

@@ -16,10 +16,12 @@ public class TesteAfter {
 		//String nextDate = scanner.next();
 		dateNascimento = LocalDate.parse(stringDate, dtf);
 		
+		
+		
 		System.out.println("Menos 1 dia: "+dateNascimento.minusDays(1));
 		System.out.println("Mais 1 dia: "+dateNascimento.plusDays(1));
 		
-		System.out.println("=========================//===============");
+	
 		System.out.println("Menos 1 Mes: "+dateNascimento.minusMonths(1));
 		System.out.println("Mais 1 Mes: "+dateNascimento.plusMonths(1));
 		

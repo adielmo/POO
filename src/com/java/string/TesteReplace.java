@@ -9,7 +9,7 @@ public class TesteReplace {
 		
 		System.out.println(nome);
 		
-		System.out.println(nome.replace('1', 'H'));
+		System.out.println(nome.replace('m', 'M'));
 		
 	}
 

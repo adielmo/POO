@@ -50,7 +50,7 @@ public class SaidaProduto {
 
 		List<Item> itens = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
 
-		String path = "c:\\temp\\saida_" + random.nextInt(10001) + "_" + dd + ".txt";
+		String pathOuput = "c:\\temp\\saida_" + random.nextInt(10001) + "_" + dd + ".txt";
 		// String path = "c:\\temp\\doc" + data + ".txt";
 
 		List<Item> produtos = itens.stream().sorted((a, b) -> a.getId().compareTo(b.getId()))
@@ -90,7 +90,7 @@ public class SaidaProduto {
 		// String tt=valorTotal.get().toPlainString();
 		String frase = "\n \n \n Qtd de itens nessa lista por Letra\n \n";
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathOuput))) {
 
 			bw.write(String.format("\nData Atual: %s \n \n", hj));
 

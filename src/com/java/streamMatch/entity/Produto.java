@@ -8,7 +8,7 @@ public class Produto {
 	private Long id;
 	private String name;
 	private BigDecimal preco;
-	private int qtd;
+	private int estoque;
 	
 	public Produto() {
 		// TODO Auto-generated constructor stub
@@ -18,7 +18,7 @@ public class Produto {
 		this.id = id;
 		this.name = name;
 		this.preco = preco;
-		this.qtd = qtd;
+		this.estoque = qtd;
 	}
 
 	public Long getId() {
@@ -46,15 +46,15 @@ public class Produto {
 	}
 
 	public int getQtd() {
-		return qtd;
+		return estoque;
 	}
 
 	public void setQtd(int qtd) {
-		this.qtd = qtd;
+		this.estoque = qtd;
 	}
 	
 	public BigDecimal getValorTotalProduto() {
-		return this.preco.multiply(new BigDecimal(this.qtd));
+		return this.preco.multiply(new BigDecimal(this.estoque));
 	}
 
 	@Override

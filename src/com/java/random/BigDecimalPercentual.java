@@ -11,7 +11,7 @@ public class BigDecimalPercentual {
 
 	public static void main(String[] args) {
 		Locale localeBR = new Locale("pt", "BR");
-		DecimalFormat df = new DecimalFormat("0.##");
+		//DecimalFormat df = new DecimalFormat("0.##");
 		
 
 		double start = 1000, end = 25000;
@@ -19,9 +19,9 @@ public class BigDecimalPercentual {
 		double result = start + (random * (end - start));
 		BigDecimal big = new BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN);
 		
-		System.out.println("BigDecimal: "+big);
-		System.out.println(result);
-		System.out.println(df.format(result));
+		//System.out.println("BigDecimal: "+big);
+		//System.out.println(result);
+	//	System.out.println(df.format(result));
 		//df.applyLocalizedPattern(null);
 		System.out.println("=============//=============================");
 		NumberFormat format = NumberFormat.getPercentInstance(localeBR);
@@ -30,8 +30,11 @@ public class BigDecimalPercentual {
 
 		String format2 = format.format(big);
 		String format3 = format.format(result);
-		//System.out.println(format2);
-		System.out.println(format3);
+		
+		System.out.println(result+": "+format3);
+		System.out.println(big+": "+format2);
+		System.out.println("===============//==================");
+		System.out.println(format.format(new BigDecimal(end).divide(new BigDecimal(start))));
 
 	}
 

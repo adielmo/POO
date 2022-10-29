@@ -4,7 +4,7 @@ package com.java.stringRegex;
  * @author Adielmo
  *
  */
-public class Replece {
+public class RepleceTodos {
 	
 	/**
 	 * Doc Regex:

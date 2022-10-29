@@ -7,8 +7,8 @@ public class Teste {
 	public static void main(String[] args) {
 	
 		BigDecimal n1, n2, saldo;
-	 n1 =	new BigDecimal(12);
-	 n2 =	new BigDecimal(23);
+	 n1 =	new BigDecimal(12.56);
+	 n2 =	new BigDecimal(23.05);
 
 		if (n1.compareTo(n2)== 1) {
 			System.out.println(false);
